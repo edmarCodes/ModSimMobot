@@ -24,102 +24,102 @@ _inputManager_UpdateManager2:
 ;inputManager.c,20 :: 		if( inputManager_GetSensorBoolLeft())
 	BTFSS      PORTB+0, 4
 	GOTO       L_inputManager_UpdateManager20
-;inputManager.c,22 :: 		inputManager_SensorAOn();
+;inputManager.c,24 :: 		PORTB |= 0x01;
 	BSF        PORTB+0, 0
-;inputManager.c,23 :: 		}
+;inputManager.c,25 :: 		}
 	GOTO       L_inputManager_UpdateManager21
 L_inputManager_UpdateManager20:
-;inputManager.c,26 :: 		inputManager_SensorAOff();
+;inputManager.c,28 :: 		PORTB &= ~0x01;
 	BCF        PORTB+0, 0
-;inputManager.c,27 :: 		}
+;inputManager.c,29 :: 		}
 L_inputManager_UpdateManager21:
-;inputManager.c,30 :: 		if( inputManager_GetSensorBoolRight())
+;inputManager.c,32 :: 		if( inputManager_GetSensorBoolRight())
 	BTFSS      PORTB+0, 5
 	GOTO       L_inputManager_UpdateManager22
-;inputManager.c,32 :: 		inputManager_SensorBOn();
+;inputManager.c,36 :: 		PORTB |= 0x02;
 	BSF        PORTB+0, 1
-;inputManager.c,33 :: 		}
+;inputManager.c,37 :: 		}
 	GOTO       L_inputManager_UpdateManager23
 L_inputManager_UpdateManager22:
-;inputManager.c,36 :: 		inputManager_SensorBOff();
+;inputManager.c,40 :: 		PORTB &= ~0x02;
 	BCF        PORTB+0, 1
-;inputManager.c,37 :: 		}
+;inputManager.c,41 :: 		}
 L_inputManager_UpdateManager23:
-;inputManager.c,40 :: 		}
+;inputManager.c,44 :: 		}
 L_end_inputManager_UpdateManager2:
 	RETURN
 ; end of _inputManager_UpdateManager2
 
 _inputManager_UpdateManager:
 
-;inputManager.c,44 :: 		void inputManager_UpdateManager(void)
-;inputManager.c,46 :: 		switch(input_manager_state)
+;inputManager.c,48 :: 		void inputManager_UpdateManager(void)
+;inputManager.c,50 :: 		switch(input_manager_state)
 	GOTO       L_inputManager_UpdateManager4
-;inputManager.c,49 :: 		case NO_SIGHT:
+;inputManager.c,53 :: 		case NO_SIGHT:
 L_inputManager_UpdateManager6:
-;inputManager.c,51 :: 		inputManager_SensorAOff();
+;inputManager.c,55 :: 		PORTB &= ~0x01;
 	BCF        PORTB+0, 0
-;inputManager.c,52 :: 		inputManager_SensorBOff();
+;inputManager.c,56 :: 		PORTB &= ~0x02;
 	BCF        PORTB+0, 1
-;inputManager.c,54 :: 		if(inputManager_GetSensorBoolLeft() && !inputManager_GetSensorBoolRight())
+;inputManager.c,58 :: 		if(inputManager_GetSensorBoolLeft() && !inputManager_GetSensorBoolRight())
 	BTFSS      PORTB+0, 4
 	GOTO       L_inputManager_UpdateManager9
 	BTFSC      PORTB+0, 5
 	GOTO       L_inputManager_UpdateManager9
 L__inputManager_UpdateManager61:
-;inputManager.c,56 :: 		input_manager_state = LEFT_SIGHT;
+;inputManager.c,60 :: 		input_manager_state = LEFT_SIGHT;
 	MOVLW      1
 	MOVWF      _input_manager_state+0
-;inputManager.c,57 :: 		inputManager_SensorAOn();
+;inputManager.c,61 :: 		PORTB |= 0x01;
 	BSF        PORTB+0, 0
-;inputManager.c,58 :: 		}
+;inputManager.c,62 :: 		}
 	GOTO       L_inputManager_UpdateManager10
 L_inputManager_UpdateManager9:
-;inputManager.c,59 :: 		else if(!inputManager_GetSensorBoolLeft() && inputManager_GetSensorBoolRight())
+;inputManager.c,63 :: 		else if(!inputManager_GetSensorBoolLeft() && inputManager_GetSensorBoolRight())
 	BTFSC      PORTB+0, 4
 	GOTO       L_inputManager_UpdateManager13
 	BTFSS      PORTB+0, 5
 	GOTO       L_inputManager_UpdateManager13
 L__inputManager_UpdateManager60:
-;inputManager.c,61 :: 		input_manager_state = RIGHT_SIGHT;
+;inputManager.c,65 :: 		input_manager_state = RIGHT_SIGHT;
 	MOVLW      2
 	MOVWF      _input_manager_state+0
-;inputManager.c,62 :: 		inputManager_SensorBOn();
+;inputManager.c,66 :: 		PORTB |= 0x02;
 	BSF        PORTB+0, 1
-;inputManager.c,63 :: 		}
+;inputManager.c,67 :: 		}
 L_inputManager_UpdateManager13:
 L_inputManager_UpdateManager10:
-;inputManager.c,64 :: 		break;
+;inputManager.c,68 :: 		break;
 	GOTO       L_inputManager_UpdateManager5
-;inputManager.c,66 :: 		case LEFT_SIGHT:
+;inputManager.c,70 :: 		case LEFT_SIGHT:
 L_inputManager_UpdateManager14:
-;inputManager.c,69 :: 		if(!inputManager_GetSensorBoolLeft() && !inputManager_GetSensorBoolRight())
+;inputManager.c,73 :: 		if(!inputManager_GetSensorBoolLeft() && !inputManager_GetSensorBoolRight())
 	BTFSC      PORTB+0, 4
 	GOTO       L_inputManager_UpdateManager17
 	BTFSC      PORTB+0, 5
 	GOTO       L_inputManager_UpdateManager17
 L__inputManager_UpdateManager59:
-;inputManager.c,71 :: 		input_manager_state = NO_SIGHT;
+;inputManager.c,75 :: 		input_manager_state = NO_SIGHT;
 	CLRF       _input_manager_state+0
-;inputManager.c,73 :: 		inputManager_SensorBOff();
+;inputManager.c,76 :: 		PORTB &= ~0x02;
 	BCF        PORTB+0, 1
-;inputManager.c,74 :: 		inputManager_SensorAOff();
+;inputManager.c,77 :: 		PORTB &= ~0x01;
 	BCF        PORTB+0, 0
-;inputManager.c,76 :: 		}
+;inputManager.c,78 :: 		}
 	GOTO       L_inputManager_UpdateManager18
 L_inputManager_UpdateManager17:
-;inputManager.c,77 :: 		else if(!inputManager_GetSensorBoolLeft() && inputManager_GetSensorBoolRight())
+;inputManager.c,79 :: 		else if(!inputManager_GetSensorBoolLeft() && inputManager_GetSensorBoolRight())
 	BTFSC      PORTB+0, 4
 	GOTO       L_inputManager_UpdateManager21
 	BTFSS      PORTB+0, 5
 	GOTO       L_inputManager_UpdateManager21
 L__inputManager_UpdateManager58:
-;inputManager.c,79 :: 		input_manager_state = RIGHT_SIGHT;
+;inputManager.c,81 :: 		input_manager_state = RIGHT_SIGHT;
 	MOVLW      2
 	MOVWF      _input_manager_state+0
-;inputManager.c,81 :: 		inputManager_SensorBOn();
+;inputManager.c,82 :: 		PORTB |= 0x02;
 	BSF        PORTB+0, 1
-;inputManager.c,82 :: 		inputManager_SensorAOff();
+;inputManager.c,83 :: 		PORTB &= ~0x01;
 	BCF        PORTB+0, 0
 ;inputManager.c,84 :: 		}
 	GOTO       L_inputManager_UpdateManager22
@@ -133,9 +133,9 @@ L__inputManager_UpdateManager57:
 ;inputManager.c,87 :: 		input_manager_state = BOTH_SIGHT;
 	MOVLW      3
 	MOVWF      _input_manager_state+0
-;inputManager.c,88 :: 		inputManager_SensorBOn();
+;inputManager.c,88 :: 		PORTB |= 0x02;
 	BSF        PORTB+0, 1
-;inputManager.c,89 :: 		inputManager_SensorAOn();
+;inputManager.c,89 :: 		PORTB |= 0x01;
 	BSF        PORTB+0, 0
 ;inputManager.c,91 :: 		}
 L_inputManager_UpdateManager25:
@@ -153,9 +153,9 @@ L_inputManager_UpdateManager26:
 L__inputManager_UpdateManager56:
 ;inputManager.c,101 :: 		input_manager_state = NO_SIGHT;
 	CLRF       _input_manager_state+0
-;inputManager.c,102 :: 		inputManager_SensorBOff();
+;inputManager.c,102 :: 		PORTB &= ~0x02;
 	BCF        PORTB+0, 1
-;inputManager.c,103 :: 		inputManager_SensorAOff();
+;inputManager.c,103 :: 		PORTB &= ~0x01;
 	BCF        PORTB+0, 0
 ;inputManager.c,104 :: 		}
 	GOTO       L_inputManager_UpdateManager30
@@ -169,9 +169,9 @@ L__inputManager_UpdateManager55:
 ;inputManager.c,107 :: 		input_manager_state = LEFT_SIGHT;
 	MOVLW      1
 	MOVWF      _input_manager_state+0
-;inputManager.c,108 :: 		inputManager_SensorBOff();
+;inputManager.c,108 :: 		PORTB &= ~0x02;
 	BCF        PORTB+0, 1
-;inputManager.c,109 :: 		inputManager_SensorAOn();
+;inputManager.c,109 :: 		PORTB |= 0x01;
 	BSF        PORTB+0, 0
 ;inputManager.c,110 :: 		}
 	GOTO       L_inputManager_UpdateManager34
@@ -185,9 +185,9 @@ L__inputManager_UpdateManager54:
 ;inputManager.c,113 :: 		input_manager_state = BOTH_SIGHT;
 	MOVLW      3
 	MOVWF      _input_manager_state+0
-;inputManager.c,114 :: 		inputManager_SensorBOn();
+;inputManager.c,114 :: 		PORTB |= 0x02;
 	BSF        PORTB+0, 1
-;inputManager.c,115 :: 		inputManager_SensorAOn();
+;inputManager.c,115 :: 		PORTB |= 0x01;
 	BSF        PORTB+0, 0
 ;inputManager.c,116 :: 		}
 L_inputManager_UpdateManager37:
@@ -206,9 +206,9 @@ L__inputManager_UpdateManager53:
 ;inputManager.c,124 :: 		input_manager_state = LEFT_SIGHT;
 	MOVLW      1
 	MOVWF      _input_manager_state+0
-;inputManager.c,125 :: 		inputManager_SensorBOff();
+;inputManager.c,125 :: 		PORTB &= ~0x02;
 	BCF        PORTB+0, 1
-;inputManager.c,126 :: 		inputManager_SensorAOn();
+;inputManager.c,126 :: 		PORTB |= 0x01;
 	BSF        PORTB+0, 0
 ;inputManager.c,127 :: 		}
 	GOTO       L_inputManager_UpdateManager42
@@ -222,9 +222,9 @@ L__inputManager_UpdateManager52:
 ;inputManager.c,130 :: 		input_manager_state = RIGHT_SIGHT;
 	MOVLW      2
 	MOVWF      _input_manager_state+0
-;inputManager.c,131 :: 		inputManager_SensorBOn();
+;inputManager.c,131 :: 		PORTB |= 0x02;
 	BSF        PORTB+0, 1
-;inputManager.c,132 :: 		inputManager_SensorAOff();
+;inputManager.c,132 :: 		PORTB &= ~0x01;
 	BCF        PORTB+0, 0
 ;inputManager.c,133 :: 		}
 	GOTO       L_inputManager_UpdateManager46
@@ -237,31 +237,27 @@ L_inputManager_UpdateManager45:
 L__inputManager_UpdateManager51:
 ;inputManager.c,136 :: 		input_manager_state = NO_SIGHT;
 	CLRF       _input_manager_state+0
-;inputManager.c,137 :: 		inputManager_SensorBOff();
-	BCF        PORTB+0, 1
-;inputManager.c,138 :: 		inputManager_SensorAOff();
-	BCF        PORTB+0, 0
-;inputManager.c,140 :: 		PORTB |= 0x02;
+;inputManager.c,137 :: 		PORTB |= 0x02;
 	BSF        PORTB+0, 1
-;inputManager.c,141 :: 		PORTB |= 0x01;
+;inputManager.c,138 :: 		PORTB |= 0x01;
 	BSF        PORTB+0, 0
-;inputManager.c,143 :: 		}
+;inputManager.c,139 :: 		}
 L_inputManager_UpdateManager49:
 L_inputManager_UpdateManager46:
 L_inputManager_UpdateManager42:
-;inputManager.c,144 :: 		break;
+;inputManager.c,140 :: 		break;
 	GOTO       L_inputManager_UpdateManager5
-;inputManager.c,146 :: 		default:
+;inputManager.c,142 :: 		default:
 L_inputManager_UpdateManager50:
-;inputManager.c,147 :: 		input_manager_state = NO_SIGHT;
+;inputManager.c,143 :: 		input_manager_state = NO_SIGHT;
 	CLRF       _input_manager_state+0
-;inputManager.c,148 :: 		inputManager_SensorBOff();
+;inputManager.c,144 :: 		PORTB &= ~0x02;
 	BCF        PORTB+0, 1
-;inputManager.c,149 :: 		inputManager_SensorAOff();
+;inputManager.c,145 :: 		PORTB &= ~0x01;
 	BCF        PORTB+0, 0
-;inputManager.c,150 :: 		break;
+;inputManager.c,146 :: 		break;
 	GOTO       L_inputManager_UpdateManager5
-;inputManager.c,151 :: 		}
+;inputManager.c,147 :: 		}
 L_inputManager_UpdateManager4:
 	MOVF       _input_manager_state+0, 0
 	XORLW      0
@@ -281,7 +277,7 @@ L_inputManager_UpdateManager4:
 	GOTO       L_inputManager_UpdateManager38
 	GOTO       L_inputManager_UpdateManager50
 L_inputManager_UpdateManager5:
-;inputManager.c,154 :: 		}
+;inputManager.c,150 :: 		}
 L_end_inputManager_UpdateManager:
 	RETURN
 ; end of _inputManager_UpdateManager

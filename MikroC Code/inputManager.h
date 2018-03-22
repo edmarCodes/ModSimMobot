@@ -29,12 +29,6 @@ void inputManager_UpdateManager(void);
 #define inputManager_GetSensorBoolLeft()       PORTB.f4
 #define inputManager_GetSensorBoolRight()      PORTB.f5
 
-#define inputManager_SensorAOn() PORTB |= 0x01
-#define inputManager_SensorAOff() PORTB &= ~0x01
-
-#define inputManager_SensorBOn() PORTB |= 0x02
-#define inputManager_SensorBOff() PORTB &= ~0x02
-
 #endif
 
 /* INPUT_MANAGER_H */

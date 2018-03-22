@@ -18,22 +18,26 @@ void inputManager_UpdateManager2(void)
 {
 
       if( inputManager_GetSensorBoolLeft())
+
+      
       {
-        inputManager_SensorAOn();
+        PORTB |= 0x01;
       }
       else
       {
-          inputManager_SensorAOff();
+          PORTB &= ~0x01;
       }
       
 
       if( inputManager_GetSensorBoolRight())
+
+
       {
-        inputManager_SensorBOn();
+        PORTB |= 0x02;
       }
       else
       {
-          inputManager_SensorBOff();
+          PORTB &= ~0x02;
       }
 
 
@@ -47,19 +51,19 @@ void inputManager_UpdateManager(void)
      {
 
       case NO_SIGHT:
-
-      inputManager_SensorAOff();
-      inputManager_SensorBOff();
+      
+      PORTB &= ~0x01;
+      PORTB &= ~0x02;
       
       if(inputManager_GetSensorBoolLeft() && !inputManager_GetSensorBoolRight())
       {
             input_manager_state = LEFT_SIGHT;
-            inputManager_SensorAOn();
+            PORTB |= 0x01;
       }
       else if(!inputManager_GetSensorBoolLeft() && inputManager_GetSensorBoolRight())
       {
            input_manager_state = RIGHT_SIGHT;
-           inputManager_SensorBOn();
+           PORTB |= 0x02;
       }
       break;
       
@@ -69,24 +73,20 @@ void inputManager_UpdateManager(void)
       if(!inputManager_GetSensorBoolLeft() && !inputManager_GetSensorBoolRight())
       {
             input_manager_state = NO_SIGHT;
-            
-            inputManager_SensorBOff();
-            inputManager_SensorAOff();
-            
+            PORTB &= ~0x02;
+            PORTB &= ~0x01;
       }
       else if(!inputManager_GetSensorBoolLeft() && inputManager_GetSensorBoolRight())
       {
             input_manager_state = RIGHT_SIGHT;
-            
-            inputManager_SensorBOn();
-            inputManager_SensorAOff();
-            
+            PORTB |= 0x02;
+            PORTB &= ~0x01;
       }
       else if(inputManager_GetSensorBoolLeft() && inputManager_GetSensorBoolRight())
       {
            input_manager_state = BOTH_SIGHT;
-           inputManager_SensorBOn();
-           inputManager_SensorAOn();
+            PORTB |= 0x02;
+            PORTB |= 0x01;
            
       }
       
@@ -99,20 +99,20 @@ void inputManager_UpdateManager(void)
       if(!inputManager_GetSensorBoolLeft() && !inputManager_GetSensorBoolRight())
       {
             input_manager_state = NO_SIGHT;
-            inputManager_SensorBOff();
-            inputManager_SensorAOff();
+            PORTB &= ~0x02;
+            PORTB &= ~0x01;
       }
       else if(inputManager_GetSensorBoolLeft() && !inputManager_GetSensorBoolRight())
       {
             input_manager_state = LEFT_SIGHT;
-            inputManager_SensorBOff();
-            inputManager_SensorAOn();
+            PORTB &= ~0x02;
+            PORTB |= 0x01;
       }
       else if(inputManager_GetSensorBoolLeft() && inputManager_GetSensorBoolRight())
       {
            input_manager_state = BOTH_SIGHT;
-           inputManager_SensorBOn();
-           inputManager_SensorAOn();
+           PORTB |= 0x02;
+           PORTB |= 0x01;
       }
       
       break;
@@ -122,32 +122,28 @@ void inputManager_UpdateManager(void)
       if(inputManager_GetSensorBoolLeft() && !inputManager_GetSensorBoolRight())
       {
             input_manager_state = LEFT_SIGHT;
-            inputManager_SensorBOff();
-            inputManager_SensorAOn();
+            PORTB &= ~0x02;
+            PORTB |= 0x01;
       }
       else if(!inputManager_GetSensorBoolLeft() && inputManager_GetSensorBoolRight())
       {
            input_manager_state = RIGHT_SIGHT;
-           inputManager_SensorBOn();
-           inputManager_SensorAOff();
+           PORTB |= 0x02;
+           PORTB &= ~0x01;
       }
       else if(!inputManager_GetSensorBoolLeft() && !inputManager_GetSensorBoolRight())
       {
            input_manager_state = NO_SIGHT;
-           inputManager_SensorBOff();
-           inputManager_SensorAOff();
-           #if 1
-           PORTB |= 0x02;
+                      PORTB |= 0x02;
            PORTB |= 0x01;
-           #endif
       }
       break;
       
       default:
               input_manager_state = NO_SIGHT;
-              inputManager_SensorBOff();
-              inputManager_SensorAOff();
-              break;
+                         PORTB &= ~0x02;
+           PORTB &= ~0x01;
+               break;
      }
 
 

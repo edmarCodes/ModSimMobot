@@ -67,10 +67,10 @@ void motorManager_UpdateManager(void)
 
  case MOTOR_OFF:
 
-  PORTB &= ~0x04 ;
-  PORTB &= ~0x08 ;
-  PWM1_Set_Duty(0) ;
-  PWM2_Set_duty(0) ;
+ PORTB &= ~0x04;
+ PORTB &= ~0x08;
+ PWM1_Set_Duty(0);
+ PWM2_Set_Duty(0);
 
  if(inputManager_GetState() ==LEFT_SIGHT)
  {
@@ -89,10 +89,11 @@ void motorManager_UpdateManager(void)
  break;
 
  case SLOW_LEFT:
-  PORTB &= ~0x04 ;
-  PORTB |= 0x08 ;
-  PWM1_Set_Duty(204) ;
-  PWM2_Set_Duty(204) ;
+
+ PORTB &= ~0x04;
+ PORTB &= ~0x08;
+ PWM1_Set_Duty(51);
+ PWM2_Set_Duty(51);
 
  if(inputManager_GetState() ==NO_SIGHT)
  {
@@ -109,10 +110,11 @@ void motorManager_UpdateManager(void)
  break;
 
  case SLOW_RIGHT:
-  PORTB |= 0x04 ;
-  PORTB &= ~0x08 ;
-  PWM1_Set_Duty(204) ;
-  PWM2_Set_Duty(204) ;
+
+ PORTB |= 0x04;
+ PORTB |= 0x08;
+ PWM1_Set_Duty(51);
+ PWM2_Set_Duty(51);
 
  if(inputManager_GetState() ==NO_SIGHT)
  {
@@ -134,10 +136,11 @@ void motorManager_UpdateManager(void)
 
  case BACKWARD:
 
-  PORTB &= ~0x04 ;
-  PORTB &= ~0x08 ;
-  PWM1_Set_Duty(204) ;
-  PWM2_Set_Duty(204) ;
+ PORTB &= ~0x04;
+ PORTB |= 0x08;
+ PWM1_Set_Duty(128);
+ PWM2_Set_Duty(128);
+
 
  motor_manager_state = DELAY;
 
@@ -145,12 +148,13 @@ void motorManager_UpdateManager(void)
 
  case DELAY:
 
-  PORTB &= ~0x04 ;
-  PORTB &= ~0x08 ;
+ PORTB &= ~0x04;
+ PORTB |= 0x08;
+
 
  Delay_ms(1000);
-  PWM1_Set_Duty(0) ;
-  PWM2_Set_duty(0) ;
+ PWM1_Set_Duty(0);
+ PWM2_Set_Duty(0);
  Delay_ms(1500);
 
  motor_manager_state = FAST_FORWARD;
@@ -159,12 +163,13 @@ void motorManager_UpdateManager(void)
 
  case FAST_FORWARD:
 
-  PORTB |= 0x04 ;
-  PORTB |= 0x08 ;
-  PWM1_Set_Duty(255) ;
-  PWM2_Set_Duty(255) ;
+ PORTB |= 0x04;
+ PORTB &= ~0x08;
+ PWM1_Set_Duty(255);
+ PWM2_Set_Duty(255);
 
- if(inputManager_GetState() ==NO_SIGHT){
+ if(inputManager_GetState() ==NO_SIGHT)
+ {
  motor_manager_state = MOTOR_OFF;
  }
 
@@ -173,10 +178,28 @@ void motorManager_UpdateManager(void)
  default:
  break;
 
+
+
  }
 }
 
 void motorManager_UpdateManager2(void)
 {
-#line 183 "C:/Users/Edmar/Documents/School Related/ModSim/Sir ran/motorManager.c"
+#line 176 "C:/Users/Edmar/Documents/School Related/ModSim/Sir ran/motorManager.c"
+ PORTB |= 0x04;
+ PORTB &= ~0x08;
+ PWM1_Set_Duty(204);
+ PWM2_Set_Duty(204);
+
+ DELAY_MS(3000);
+
+ PORTB &= ~0x04;
+ PORTB |= 0x08;
+ PWM1_Set_Duty(204);
+ PWM2_Set_Duty(204);
+
+ DELAY_MS(3000);
+
+
+
 }

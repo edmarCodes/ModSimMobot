@@ -1,6 +1,5 @@
 #include "motorManager.h"
 #include "inputManager.h"
-#include "macro.h"
 
 #include "uart_debug.h"
 
@@ -12,7 +11,7 @@
 
 
 void main() {
-  MAJOR_VERSION;
+
   TRISB =0xF0; // Set to Output   RB0 to RB3 to Output and RB4 to RB7 to  Output
   PWM1_Init(5000);
   PWM2_Init(5000);
@@ -32,7 +31,7 @@ void main() {
   for(;;)
   {
    inputManager_UpdateManager();
-   motorManager_UpdateManager();
+   motorManager_UpdateManager2();
    
    uart_debug_Update();
   
