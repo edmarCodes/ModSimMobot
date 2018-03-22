@@ -11,3 +11,6 @@
 
 #define TRUE 1
 #define FALSE 0
+
+#define MAJOR_VERSION 1
+#define MINOR_VERSION 0

@@ -19,20 +19,23 @@ void motorManager_UpdateManager(void);
 
 void motorManager_UpdateManager2(void);
 
-#define motorManager_MotorAMoveC()    PORTB |= 0x04
+#define motorManager_MotorAMoveForward()    PORTB |= 0x04
 
-#define motorManager_MotorAMoveCW()   PORTB &= ~0x04
+#define motorManager_MotorAMoveBackward()   PORTB &= ~0x04
 
-#define motorManager_MotorAMoveSlow()  PWM1_Set_Duty(51)
-#define motorManager_MotorAMoveSlowBackward()  PWM1_Set_Duty(128)
+#define motorManager_MotorAMoveSlow()  PWM1_Set_Duty(204)
+#define motorManager_MotorAMoveSlowBackward()  PWM1_Set_Duty(204)
 #define motorManager_MotorAMoveFast()  PWM1_Set_Duty(255)
 
-#define motorManager_MotorBMoveC()    PORTB |= 0x08
-#define motorManager_MotorBMoveCW()   PORTB &= ~0x08
+#define motorManager_MotorBMoveForward()    PORTB |= 0x08
+#define motorManager_MotorBMoveBackward()   PORTB &= ~0x08
 
-#define motorManager_MotorBMoveSlow()   PWM2_Set_Duty(51)
-#define motorManager_MotorBMoveSlowBackward()  PWM2_Set_Duty(128)
+#define motorManager_MotorBMoveSlow()   PWM2_Set_Duty(204)
+#define motorManager_MotorBMoveSlowBackward()  PWM2_Set_Duty(204)
 #define motorManager_MotorBMoveFast()   PWM2_Set_Duty(255)
+
+#define motorManager_MotorAOff() PWM1_Set_Duty(0)
+#define motorManager_MotorBOff() PWM2_Set_duty(0)
 
 #endif
 

@@ -40,26 +40,22 @@ void inputManager_UpdateManager2(void)
 {
 
  if(  PORTB.f4 )
-
-
  {
- PORTB |= 0x01;
+  PORTB |= 0x01 ;
  }
  else
  {
- PORTB &= ~0x01;
+  PORTB &= ~0x01 ;
  }
 
 
  if(  PORTB.f5 )
-
-
  {
- PORTB |= 0x02;
+  PORTB |= 0x02 ;
  }
  else
  {
- PORTB &= ~0x02;
+  PORTB &= ~0x02 ;
  }
 
 
@@ -74,18 +70,18 @@ void inputManager_UpdateManager(void)
 
  case NO_SIGHT:
 
- PORTB &= ~0x01;
- PORTB &= ~0x02;
+  PORTB &= ~0x01 ;
+  PORTB &= ~0x02 ;
 
  if( PORTB.f4  && ! PORTB.f5 )
  {
  input_manager_state = LEFT_SIGHT;
- PORTB |= 0x01;
+  PORTB |= 0x01 ;
  }
  else if(! PORTB.f4  &&  PORTB.f5 )
  {
  input_manager_state = RIGHT_SIGHT;
- PORTB |= 0x02;
+  PORTB |= 0x02 ;
  }
  break;
 
@@ -95,20 +91,24 @@ void inputManager_UpdateManager(void)
  if(! PORTB.f4  && ! PORTB.f5 )
  {
  input_manager_state = NO_SIGHT;
- PORTB &= ~0x02;
- PORTB &= ~0x01;
+
+  PORTB &= ~0x02 ;
+  PORTB &= ~0x01 ;
+
  }
  else if(! PORTB.f4  &&  PORTB.f5 )
  {
  input_manager_state = RIGHT_SIGHT;
- PORTB |= 0x02;
- PORTB &= ~0x01;
+
+  PORTB |= 0x02 ;
+  PORTB &= ~0x01 ;
+
  }
  else if( PORTB.f4  &&  PORTB.f5 )
  {
  input_manager_state = BOTH_SIGHT;
- PORTB |= 0x02;
- PORTB |= 0x01;
+  PORTB |= 0x02 ;
+  PORTB |= 0x01 ;
 
  }
 
@@ -121,20 +121,20 @@ void inputManager_UpdateManager(void)
  if(! PORTB.f4  && ! PORTB.f5 )
  {
  input_manager_state = NO_SIGHT;
- PORTB &= ~0x02;
- PORTB &= ~0x01;
+  PORTB &= ~0x02 ;
+  PORTB &= ~0x01 ;
  }
  else if( PORTB.f4  && ! PORTB.f5 )
  {
  input_manager_state = LEFT_SIGHT;
- PORTB &= ~0x02;
- PORTB |= 0x01;
+  PORTB &= ~0x02 ;
+  PORTB |= 0x01 ;
  }
  else if( PORTB.f4  &&  PORTB.f5 )
  {
  input_manager_state = BOTH_SIGHT;
- PORTB |= 0x02;
- PORTB |= 0x01;
+  PORTB |= 0x02 ;
+  PORTB |= 0x01 ;
  }
 
  break;
@@ -144,27 +144,31 @@ void inputManager_UpdateManager(void)
  if( PORTB.f4  && ! PORTB.f5 )
  {
  input_manager_state = LEFT_SIGHT;
- PORTB &= ~0x02;
- PORTB |= 0x01;
+  PORTB &= ~0x02 ;
+  PORTB |= 0x01 ;
  }
  else if(! PORTB.f4  &&  PORTB.f5 )
  {
  input_manager_state = RIGHT_SIGHT;
- PORTB |= 0x02;
- PORTB &= ~0x01;
+  PORTB |= 0x02 ;
+  PORTB &= ~0x01 ;
  }
  else if(! PORTB.f4  && ! PORTB.f5 )
  {
  input_manager_state = NO_SIGHT;
+  PORTB &= ~0x02 ;
+  PORTB &= ~0x01 ;
+
  PORTB |= 0x02;
  PORTB |= 0x01;
+
  }
  break;
 
  default:
  input_manager_state = NO_SIGHT;
- PORTB &= ~0x02;
- PORTB &= ~0x01;
+  PORTB &= ~0x02 ;
+  PORTB &= ~0x01 ;
  break;
  }
 
