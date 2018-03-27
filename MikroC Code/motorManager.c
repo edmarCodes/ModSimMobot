@@ -26,10 +26,10 @@ void motorManager_UpdateManager(void)
          
     case MOTOR_OFF:
     
-         PORTB &= ~0x04;
-         PORTB &= ~0x08;
-          PWM1_Set_Duty(0);
-          PWM2_Set_Duty(0);
+         motorManager_MotorAMoveBackward();
+         motorManager_MotorBMoveBackward();
+         motorManager_MotorAOff();
+         motorManager_MotorBOff();
           
           if(inputManager_GetState() ==LEFT_SIGHT)
           {
@@ -48,11 +48,10 @@ void motorManager_UpdateManager(void)
          break;
          
     case SLOW_LEFT:
-    
-         PORTB &= ~0x04;
-         PORTB &= ~0x08;
-          PWM1_Set_Duty(204);
-          PWM2_Set_Duty(204);
+         motorManager_MotorAMoveBackward();
+         motorManager_MotorBMoveForward();
+         motorManager_MotorAMoveSlow();
+         motorManager_MotorBMoveSlow();
 
           if(inputManager_GetState() ==NO_SIGHT)
           {
@@ -69,11 +68,10 @@ void motorManager_UpdateManager(void)
          break;
           
     case  SLOW_RIGHT:
-    
-         PORTB |= 0x04;
-         PORTB |= 0x08;
-          PWM1_Set_Duty(204);
-          PWM2_Set_Duty(204);
+         motorManager_MotorAMoveForward();
+         motorManager_MotorBMoveBackward();
+         motorManager_MotorAMoveSlow();
+         motorManager_MotorBMoveSlow();
 
          if(inputManager_GetState() ==NO_SIGHT)
           {
@@ -94,51 +92,46 @@ void motorManager_UpdateManager(void)
           
           
     case  BACKWARD:
+    
+         motorManager_MotorAMoveBackward();
+         motorManager_MotorBMoveBackward();
+         motorManager_MotorAMoveSlow();
+         motorManager_MotorBMoveSlow();
 
-         PORTB &= ~0x04;
-         PORTB |= 0x08;
-          PWM1_Set_Duty(204);
-          PWM2_Set_Duty(204);
+         motor_manager_state = DELAY;
 
-
-               motor_manager_state = DELAY;
-
-          break;
+         break;
           
     case DELAY:
-    
-         PORTB &= ~0x04;
-         PORTB |= 0x08;
 
+         motorManager_MotorAMoveBackward();
+         motorManager_MotorBMoveBackward();
 
-          Delay_ms(1000);
-                    PWM1_Set_Duty(0);
-          PWM2_Set_Duty(0);
-          Delay_ms(1500);
+         Delay_ms(1000);
+         motorManager_MotorAOff();
+         motorManager_MotorBOff();
+         Delay_ms(1500);
 
-               motor_manager_state = FAST_FORWARD;
+         motor_manager_state = FAST_FORWARD;
 
          break;
          
     case FAST_FORWARD:
-    
-         PORTB |= 0x04;
-         PORTB &= ~0x08;
-          PWM1_Set_Duty(255);
-          PWM2_Set_Duty(255);
+
+         motorManager_MotorAMoveForward();
+         motorManager_MotorBMoveForward();
+         motorManager_MotorAMoveFast();
+         motorManager_MotorBMoveFast();
           
-          if(inputManager_GetState() ==NO_SIGHT)
-          {
-               motor_manager_state = MOTOR_OFF;
+         if(inputManager_GetState() ==NO_SIGHT){
+            motor_manager_state = MOTOR_OFF;
           }
     
-         break;
-         
+          break;
+          
     default:
             break;
- 
- 
- 
+
  }
 }
 
@@ -159,9 +152,8 @@ void motorManager_UpdateManager2(void)
           PWM1_Set_Duty(255);       //speed
           PWM2_Set_Duty(255);              //speed
          }
-          #endif
+         
 
-         #if 0
           DELAY_MS(3000);
           
          PORTB &= ~0x04;
@@ -170,7 +162,6 @@ void motorManager_UpdateManager2(void)
           PWM2_Set_Duty(255);
           
           DELAY_MS(3000);
-         #endif
          
 
           PORTB |= 0x04;
@@ -187,6 +178,6 @@ void motorManager_UpdateManager2(void)
           
           DELAY_MS(3000);
           
-
+         #endif
           //motorManager_MotorAMoveC();
 }

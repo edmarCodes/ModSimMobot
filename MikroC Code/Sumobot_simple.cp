@@ -42,6 +42,7 @@ void inputManager_Init(void);
 
 void inputManager_UpdateManager(void);
  void inputManager_UpdateManager2(void);
+#line 1 "c:/users/edmar/documents/school related/modsim/sir ran/macro.h"
 #line 1 "c:/users/edmar/documents/school related/modsim/sir ran/uart_debug.h"
 
 
@@ -50,9 +51,9 @@ void inputManager_UpdateManager(void);
 void uart_debug_Init(void);
 
  void uart_debug_Update(void);
-#line 13 "C:/Users/Edmar/Documents/School Related/ModSim/Sir ran/Sumobot_simple.c"
+#line 14 "C:/Users/Edmar/Documents/School Related/ModSim/Sir ran/Sumobot_simple.c"
 void main() {
-
+  1 ;
  TRISB =0xF0;
  PWM1_Init(5000);
  PWM2_Init(5000);
@@ -72,7 +73,7 @@ void main() {
  for(;;)
  {
  inputManager_UpdateManager();
- motorManager_UpdateManager2();
+ motorManager_UpdateManager();
 
  uart_debug_Update();
 
