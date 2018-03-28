@@ -536,6 +536,10 @@ lcd_out
 lcd_out_cp
 ldexp
 ldiv
+line_manager_state
+linemanager_getstate
+linemanager_init
+linemanager_updatemanager
 log
 log10
 longint2double

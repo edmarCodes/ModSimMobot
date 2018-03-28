@@ -1,7 +1,7 @@
-#line 1 "C:/Users/Edmar/Documents/School Related/ModSim/Sir ran/inputManager.c"
-#line 1 "c:/users/edmar/documents/school related/modsim/sir ran/inputmanager.h"
-#line 1 "c:/users/edmar/documents/school related/modsim/sir ran/macro.h"
-#line 6 "c:/users/edmar/documents/school related/modsim/sir ran/inputmanager.h"
+#line 1 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/inputManager.c"
+#line 1 "c:/repository/linetracermanager/modsimmobot/mikroc code/inputmanager.h"
+#line 1 "c:/repository/linetracermanager/modsimmobot/mikroc code/macro.h"
+#line 6 "c:/repository/linetracermanager/modsimmobot/mikroc code/inputmanager.h"
 typedef enum
 {
  NO_SIGHT =0,
@@ -21,8 +21,8 @@ void inputManager_Init(void);
 
 void inputManager_UpdateManager(void);
  void inputManager_UpdateManager2(void);
-#line 1 "c:/users/edmar/documents/school related/modsim/sir ran/macro.h"
-#line 4 "C:/Users/Edmar/Documents/School Related/ModSim/Sir ran/inputManager.c"
+#line 1 "c:/repository/linetracermanager/modsimmobot/mikroc code/macro.h"
+#line 4 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/inputManager.c"
 input_manager_state_t input_manager_state = NO_SIGHT;
 
 input_manager_state_t inputManager_GetState(void)

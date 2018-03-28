@@ -10,7 +10,9 @@ typedef enum
 //  SLOW_FORWARD,
   BACKWARD=4,
   DELAY=5,
-  FAST_FORWARD=6
+  FAST_FORWARD=6,
+  FAST_RIGHT = 7,
+  FAST_LEFT = 8
 }motor_manager_state_t;
 
 motor_manager_state_t motorManager_GetState(void);
