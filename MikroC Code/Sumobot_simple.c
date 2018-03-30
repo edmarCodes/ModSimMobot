@@ -1,5 +1,7 @@
-#include "motorManager.h"
 #include "inputManager.h"
+#include "lineManager.h"
+#include "motorManager.h"
+
 #include "macro.h"
 
 #include "uart_debug.h"
@@ -10,9 +12,13 @@
 
 
 
-
+/**
+ * @brief initialize all the needed component
+ * infinite loop for the main process - the managers state and the motors move
+ * 
+ */
 void main() {
-  MAJOR_VERSION;
+  MINOR_VERSION;
   TRISB =0xF0; // Set to Output   RB0 to RB3 to Output and RB4 to RB7 to  Output
   PWM1_Init(5000);
   PWM2_Init(5000);
@@ -20,6 +26,7 @@ void main() {
   PORTB =0;
   uart_debug_Init();
   inputManager_Init();
+  lineManager_Init();
   motorManager_Init();
   PWM1_Start();
   PWM2_Start();
@@ -32,6 +39,7 @@ void main() {
   for(;;)
   {
    inputManager_UpdateManager();
+   lineManager_UpdateManager();
    motorManager_UpdateManager();
    
    uart_debug_Update();
