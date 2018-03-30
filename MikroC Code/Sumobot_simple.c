@@ -12,7 +12,11 @@
 
 
 
-
+/**
+ * @brief initialize all the needed component
+ * infinite loop for the main process - the managers state and the motors move
+ * 
+ */
 void main() {
   MINOR_VERSION;
   TRISB =0xF0; // Set to Output   RB0 to RB3 to Output and RB4 to RB7 to  Output
@@ -35,6 +39,7 @@ void main() {
   for(;;)
   {
    inputManager_UpdateManager();
+   lineManager_UpdateManager();
    motorManager_UpdateManager();
    
    uart_debug_Update();

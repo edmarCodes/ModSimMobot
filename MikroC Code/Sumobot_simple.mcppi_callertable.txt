@@ -9,6 +9,7 @@ main
 	PWM2_Start
 	UART1_Init
 	inputManager_UpdateManager
+	lineManager_UpdateManager
 	motorManager_UpdateManager
 		PWM1_Set_Duty
 			Mul_16x16_U
@@ -20,3 +21,4 @@ main
 		UART1_Write
 		inputManager_GetState
 		motorManager_GetState
+		lineManager_GetState

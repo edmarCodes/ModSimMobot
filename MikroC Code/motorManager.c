@@ -3,18 +3,31 @@
 #include "inputManager.h"
 #include "lineManager.h"
 
- motor_manager_state_t motor_manager_state =  MOTOR_INIT;
+ motor_manager_state_t motor_manager_state =  MOTOR_INIT; // initial state of the motor manager
  
- 
+ /**
+  * @brief get the current state of the motor manager
+  * 
+  * @return motor_manager_state_t 
+  */
  motor_manager_state_t motorManager_GetState(void)
  {
   return motor_manager_state;
  }
+
+ /**
+  * @brief initialize motor manager
+  * 
+  */
 void motorManager_Init(void)
 {
 
 }
 
+/**
+ * @brief Get the motor manager state, then check for the sensors state, decide motor managers move and assign the current manager state
+ * 
+ */
 void motorManager_UpdateManager(void)
 {
  switch(motor_manager_state)

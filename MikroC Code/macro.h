@@ -1,3 +1,5 @@
+ #ifndef MACRO_H_
+#define MACRO_H_
 
 #define bool unsigned char
 #define uint8_t unsigned char
@@ -12,5 +14,7 @@
 #define TRUE 1
 #define FALSE 0
 
-#define MAJOR_VERSION 1
-#define MINOR_VERSION 0
+#define MAJOR_VERSION 0
+#define MINOR_VERSION 3
+
+#endif

@@ -6,7 +6,7 @@ Value=-1
 [BUILD_TYPE]
 Value=0
 [ACTIVE_TAB]
-Value=lineManager.c
+Value=Sumobot_simple.c
 [USE_EEPROM]
 Value=0
 [USE_HEAP]
@@ -28,7 +28,7 @@ Count=0
 Count=0
 ActiveImageIndex=-1
 [OPENED_FILES]
-Count=9
+Count=10
 File0=Sumobot_simple.c
 File1=motorManager.c
 File2=motorManager.h
@@ -38,6 +38,7 @@ File5=macro.h
 File6=uart_debug.c
 File7=lineManager.h
 File8=lineManager.c
+File9=uart_debug.h
 [EEPROM]
 Count=0
 [ACTIVE_COMMENTS_FILES]

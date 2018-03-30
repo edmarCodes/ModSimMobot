@@ -1,15 +1,12 @@
 #line 1 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/motorManager.c"
 #line 1 "c:/repository/linetracermanager/modsimmobot/mikroc code/motormanager.h"
-
-
-
+#line 17 "c:/repository/linetracermanager/modsimmobot/mikroc code/motormanager.h"
 typedef enum
 {
  MOTOR_INIT=0,
  MOTOR_OFF=1,
  SLOW_LEFT=2,
  SLOW_RIGHT=3,
-
  BACKWARD=4,
  DELAY=5,
  FAST_FORWARD=6,
@@ -23,8 +20,7 @@ void motorManager_UpdateManager(void);
 
 void motorManager_UpdateManager2(void);
 #line 1 "c:/repository/linetracermanager/modsimmobot/mikroc code/inputmanager.h"
-#line 1 "c:/repository/linetracermanager/modsimmobot/mikroc code/macro.h"
-#line 6 "c:/repository/linetracermanager/modsimmobot/mikroc code/inputmanager.h"
+#line 12 "c:/repository/linetracermanager/modsimmobot/mikroc code/inputmanager.h"
 typedef enum
 {
  NO_SIGHT =0,
@@ -45,8 +41,7 @@ void inputManager_Init(void);
 void inputManager_UpdateManager(void);
  void inputManager_UpdateManager2(void);
 #line 1 "c:/repository/linetracermanager/modsimmobot/mikroc code/linemanager.h"
-#line 1 "c:/repository/linetracermanager/modsimmobot/mikroc code/macro.h"
-#line 6 "c:/repository/linetracermanager/modsimmobot/mikroc code/linemanager.h"
+#line 13 "c:/repository/linetracermanager/modsimmobot/mikroc code/linemanager.h"
 typedef enum{
  NO_LINE = 0,
  PARTIAL_LEFT = 1,
@@ -62,17 +57,17 @@ void lineManager_Init(void);
 void lineManager_UpdateManager(void);
 #line 6 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/motorManager.c"
  motor_manager_state_t motor_manager_state = MOTOR_INIT;
-
-
+#line 13 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/motorManager.c"
  motor_manager_state_t motorManager_GetState(void)
  {
  return motor_manager_state;
  }
+#line 22 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/motorManager.c"
 void motorManager_Init(void)
 {
 
 }
-
+#line 31 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/motorManager.c"
 void motorManager_UpdateManager(void)
 {
  switch(motor_manager_state)
@@ -237,5 +232,5 @@ void motorManager_UpdateManager(void)
 
 void motorManager_UpdateManager2(void)
 {
-#line 225 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/motorManager.c"
+#line 238 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/motorManager.c"
 }

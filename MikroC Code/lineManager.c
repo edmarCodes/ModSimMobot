@@ -1,17 +1,30 @@
 #include "lineManager.h"
 #include "macro.h"
 
-line_manager_state_t line_manager_state = NO_LINE;
+line_manager_state_t line_manager_state = NO_LINE; // initial state of the line manager
 
+/**
+ * @brief retrun the current state of line manager
+ * 
+ * @return line_manager_state_t 
+ */
 line_manager_state_t lineManager_GetState(void)
 {
 return line_manager_state;
 }
 
+/**
+ * @brief initialize line manager
+ * 
+ */
 void lineManager_Init(void)
 {
 }
 
+/**
+ * @brief Get the line manager state, then check for the sensors and assign the current manager state
+ * 
+ */
 void lineManager_UpdateManager(void)
 {
 

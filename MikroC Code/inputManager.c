@@ -1,19 +1,31 @@
 
 #include "inputManager.h"
 #include "macro.h"
-input_manager_state_t input_manager_state = NO_SIGHT;
 
+input_manager_state_t input_manager_state = NO_SIGHT; // initial state of the input manager
+
+/**
+ * @brief  return the current state of the input manager
+ * 
+ * @return input_manager_state_t 
+ */
 input_manager_state_t inputManager_GetState(void)
 {
  return input_manager_state;
 }
 
+/**
+ * @brief initialize input manager
+ * 
+ */
 void inputManager_Init(void)
 {
 }
 
-
-
+/**
+ * @brief This function is for debugging purposes only
+ * 
+ */
 void inputManager_UpdateManager2(void)
 {
 
@@ -40,7 +52,10 @@ void inputManager_UpdateManager2(void)
 }
 
 
-
+/**
+ * @brief Get the input manager state, then check for the sensors and assign the current manager state
+ * 
+ */
 void inputManager_UpdateManager(void)
 {
      switch(input_manager_state)
@@ -136,10 +151,6 @@ void inputManager_UpdateManager(void)
            input_manager_state = NO_SIGHT;
            inputManager_SensorBOff();
            inputManager_SensorAOff();
-           #if 1
-           PORTB |= 0x02;
-           PORTB |= 0x01;
-           #endif
       }
       break;
       
