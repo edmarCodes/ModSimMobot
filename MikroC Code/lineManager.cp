@@ -1,6 +1,6 @@
-#line 1 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/lineManager.c"
-#line 1 "c:/repository/linetracermanager/modsimmobot/mikroc code/linemanager.h"
-#line 13 "c:/repository/linetracermanager/modsimmobot/mikroc code/linemanager.h"
+#line 1 "C:/Repository/ModSimMobot/MikroC Code/lineManager.c"
+#line 1 "c:/repository/modsimmobot/mikroc code/linemanager.h"
+#line 13 "c:/repository/modsimmobot/mikroc code/linemanager.h"
 typedef enum{
  NO_LINE = 0,
  PARTIAL_LEFT = 1,
@@ -14,19 +14,19 @@ line_manager_state_t lineManager_GetState(void);
 void lineManager_Init(void);
 
 void lineManager_UpdateManager(void);
-#line 1 "c:/repository/linetracermanager/modsimmobot/mikroc code/macro.h"
-#line 4 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/lineManager.c"
+#line 1 "c:/repository/modsimmobot/mikroc code/macro.h"
+#line 4 "C:/Repository/ModSimMobot/MikroC Code/lineManager.c"
 line_manager_state_t line_manager_state = NO_LINE;
-#line 11 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/lineManager.c"
+#line 11 "C:/Repository/ModSimMobot/MikroC Code/lineManager.c"
 line_manager_state_t lineManager_GetState(void)
 {
 return line_manager_state;
 }
-#line 20 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/lineManager.c"
+#line 20 "C:/Repository/ModSimMobot/MikroC Code/lineManager.c"
 void lineManager_Init(void)
 {
 }
-#line 28 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/lineManager.c"
+#line 28 "C:/Repository/ModSimMobot/MikroC Code/lineManager.c"
 void lineManager_UpdateManager(void)
 {
 

@@ -269,7 +269,7 @@ L_uart_debug_Update12:
 	NOP
 	NOP
 ;uart_debug.c,53 :: 		UART1_Write(MINOR_VERSION);
-	MOVLW      3
+	MOVLW      4
 	MOVWF      FARG_UART1_Write_data_+0
 	CALL       _UART1_Write+0
 ;uart_debug.c,55 :: 		}

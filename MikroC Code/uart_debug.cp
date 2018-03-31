@@ -1,5 +1,5 @@
-#line 1 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/uart_debug.c"
-#line 1 "c:/repository/linetracermanager/modsimmobot/mikroc code/uart_debug.h"
+#line 1 "C:/Repository/ModSimMobot/MikroC Code/uart_debug.c"
+#line 1 "c:/repository/modsimmobot/mikroc code/uart_debug.h"
 
 
 
@@ -7,8 +7,8 @@
 void uart_debug_Init(void);
 
  void uart_debug_Update(void);
-#line 1 "c:/repository/linetracermanager/modsimmobot/mikroc code/inputmanager.h"
-#line 12 "c:/repository/linetracermanager/modsimmobot/mikroc code/inputmanager.h"
+#line 1 "c:/repository/modsimmobot/mikroc code/inputmanager.h"
+#line 12 "c:/repository/modsimmobot/mikroc code/inputmanager.h"
 typedef enum
 {
  NO_SIGHT =0,
@@ -28,8 +28,8 @@ void inputManager_Init(void);
 
 void inputManager_UpdateManager(void);
  void inputManager_UpdateManager2(void);
-#line 1 "c:/repository/linetracermanager/modsimmobot/mikroc code/linemanager.h"
-#line 13 "c:/repository/linetracermanager/modsimmobot/mikroc code/linemanager.h"
+#line 1 "c:/repository/modsimmobot/mikroc code/linemanager.h"
+#line 13 "c:/repository/modsimmobot/mikroc code/linemanager.h"
 typedef enum{
  NO_LINE = 0,
  PARTIAL_LEFT = 1,
@@ -43,19 +43,21 @@ line_manager_state_t lineManager_GetState(void);
 void lineManager_Init(void);
 
 void lineManager_UpdateManager(void);
-#line 1 "c:/repository/linetracermanager/modsimmobot/mikroc code/motormanager.h"
-#line 17 "c:/repository/linetracermanager/modsimmobot/mikroc code/motormanager.h"
+#line 1 "c:/repository/modsimmobot/mikroc code/motormanager.h"
+#line 18 "c:/repository/modsimmobot/mikroc code/motormanager.h"
 typedef enum
 {
  MOTOR_INIT=0,
- MOTOR_OFF=1,
+ MOTOR_STANDBY=1,
  SLOW_LEFT=2,
  SLOW_RIGHT=3,
  BACKWARD=4,
  DELAY=5,
  FAST_FORWARD=6,
- FAST_RIGHT = 7,
- FAST_LEFT = 8
+ LINE_LEFT=7,
+ LINE_RIGHT=8,
+ LINE_FORWARD=9,
+ LINE_BACKWARD=10
 }motor_manager_state_t;
 
 motor_manager_state_t motorManager_GetState(void);
@@ -63,13 +65,13 @@ void motorManager_Init(void);
 void motorManager_UpdateManager(void);
 
 void motorManager_UpdateManager2(void);
-#line 1 "c:/repository/linetracermanager/modsimmobot/mikroc code/macro.h"
-#line 11 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/uart_debug.c"
+#line 1 "c:/repository/modsimmobot/mikroc code/macro.h"
+#line 11 "C:/Repository/ModSimMobot/MikroC Code/uart_debug.c"
 void uart_debug_Init(void)
 {
 
 }
-#line 20 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/uart_debug.c"
+#line 20 "C:/Repository/ModSimMobot/MikroC Code/uart_debug.c"
 void uart_debug_Update(void)
 {
 
@@ -103,6 +105,6 @@ void uart_debug_Update(void)
  Delay_ms(50);
  UART1_Write( 0 );
  Delay_ms(50);
- UART1_Write( 3 );
+ UART1_Write( 4 );
 
 }

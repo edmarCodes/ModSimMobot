@@ -1,5 +1,11 @@
 
 # Mobot
+## v0.4
+- Integrating all the managers together
+- Test the code on hardware and change the states base on results
+- Modify state table on motor manager
+- Add new states on motor manager (LINE_LEFT, LINE_RIGHT, LINE_BACKWARD, LINE_FORWARD) to deal with line sensors
+- Modify the code base on the new state table
 ## v0.3
 - Define line tracer manager
 - Modify state table for motor manager, integrating line manager

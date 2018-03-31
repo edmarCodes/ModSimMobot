@@ -1,6 +1,6 @@
-#line 1 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/inputManager.c"
-#line 1 "c:/repository/linetracermanager/modsimmobot/mikroc code/inputmanager.h"
-#line 12 "c:/repository/linetracermanager/modsimmobot/mikroc code/inputmanager.h"
+#line 1 "C:/Repository/ModSimMobot/MikroC Code/inputManager.c"
+#line 1 "c:/repository/modsimmobot/mikroc code/inputmanager.h"
+#line 12 "c:/repository/modsimmobot/mikroc code/inputmanager.h"
 typedef enum
 {
  NO_SIGHT =0,
@@ -20,19 +20,19 @@ void inputManager_Init(void);
 
 void inputManager_UpdateManager(void);
  void inputManager_UpdateManager2(void);
-#line 1 "c:/repository/linetracermanager/modsimmobot/mikroc code/macro.h"
-#line 5 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/inputManager.c"
+#line 1 "c:/repository/modsimmobot/mikroc code/macro.h"
+#line 5 "C:/Repository/ModSimMobot/MikroC Code/inputManager.c"
 input_manager_state_t input_manager_state = NO_SIGHT;
-#line 12 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/inputManager.c"
+#line 12 "C:/Repository/ModSimMobot/MikroC Code/inputManager.c"
 input_manager_state_t inputManager_GetState(void)
 {
  return input_manager_state;
 }
-#line 21 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/inputManager.c"
+#line 21 "C:/Repository/ModSimMobot/MikroC Code/inputManager.c"
 void inputManager_Init(void)
 {
 }
-#line 29 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/inputManager.c"
+#line 29 "C:/Repository/ModSimMobot/MikroC Code/inputManager.c"
 void inputManager_UpdateManager2(void)
 {
 
@@ -57,7 +57,7 @@ void inputManager_UpdateManager2(void)
 
 
 }
-#line 59 "C:/Repository/lineTracerManager/ModSimMobot/MikroC Code/inputManager.c"
+#line 59 "C:/Repository/ModSimMobot/MikroC Code/inputManager.c"
 void inputManager_UpdateManager(void)
 {
  switch(input_manager_state)

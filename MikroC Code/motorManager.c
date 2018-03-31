@@ -34,42 +34,45 @@ void motorManager_UpdateManager(void)
  {
     case MOTOR_INIT:
     
-         motor_manager_state =  MOTOR_OFF;
+         motor_manager_state =  MOTOR_STANDBY;
          break;
          
          
-    case MOTOR_OFF:
-    
+    case MOTOR_STANDBY:
+         /*
          motorManager_MotorAMoveBackward();
          motorManager_MotorBMoveBackward();
          motorManager_MotorAOff();
-         motorManager_MotorBOff();
+         motorManager_MotorBOff();*/
           
           if(inputManager_GetState() == LEFT_SIGHT)
           {
                motor_manager_state = SLOW_LEFT;
           }
-          else if(inputManager_GetState() ==RIGHT_SIGHT)
+          else if(inputManager_GetState() == RIGHT_SIGHT)
           {
-                 motor_manager_state = SLOW_RIGHT;
+               motor_manager_state = SLOW_RIGHT;
           }
-          else if(inputManager_GetState() ==BOTH_SIGHT)
+          else if(inputManager_GetState() == BOTH_SIGHT)
           {
-                  motor_manager_state = BACKWARD;
+               motor_manager_state = BACKWARD;
+          }else if(inputManager_GetState() == NO_SIGHT)
+          {
+               motor_manager_state = SLOW_LEFT;
           }
 
 
          break;
          
     case SLOW_LEFT:
-         motorManager_MotorAMoveBackward();
-         motorManager_MotorBMoveForward();
+         motorManager_MotorAMoveForward();
+         motorManager_MotorBMoveBackward();
          motorManager_MotorAMoveSlow();
          motorManager_MotorBMoveSlow();
 
           if(inputManager_GetState() ==NO_SIGHT)
           {
-                 motor_manager_state = MOTOR_OFF;
+                 motor_manager_state = MOTOR_STANDBY;
           }
           else if(inputManager_GetState() ==RIGHT_SIGHT || lineManager_GetState() == PARTIAL_LEFT)
           {
@@ -86,14 +89,14 @@ void motorManager_UpdateManager(void)
          break;
           
     case  SLOW_RIGHT:
-         motorManager_MotorAMoveForward();
-         motorManager_MotorBMoveBackward();
+         motorManager_MotorAMoveBackward();
+         motorManager_MotorBMoveForward();
          motorManager_MotorAMoveSlow();
          motorManager_MotorBMoveSlow();
 
          if(inputManager_GetState() ==NO_SIGHT)
           {
-                 motor_manager_state = MOTOR_OFF;
+                 motor_manager_state = MOTOR_STANDBY;
           }
           else if(inputManager_GetState() ==LEFT_SIGHT || lineManager_GetState() == PARTIAL_RIGHT)
           {
