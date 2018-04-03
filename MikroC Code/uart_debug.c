@@ -35,6 +35,20 @@ void uart_debug_Update(void)
  UART1_Write(2);
  Delay_ms(50);
  UART1_Write(motorManager_GetState());
+ /*
+ Delay_ms(50);
+ UART1_Write(0x65);
+ Delay_ms(50);
+ UART1_Write(3);
+ Delay_ms(50);
+ UART1_Write(inputManager_GetSensorBoolLeft());
+ 
+ Delay_ms(50);
+ UART1_Write(0x65);
+ Delay_ms(50);
+ UART1_Write(4);
+ Delay_ms(50);
+ UART1_Write(inputManager_GetSensorBoolRight()); */
 
  Delay_ms(50);
  UART1_Write(0x65);
@@ -42,7 +56,7 @@ void uart_debug_Update(void)
  UART1_Write(3);
  Delay_ms(50);
  UART1_Write(lineManager_GetState());
- 
+
  Delay_ms(50);
  UART1_Write(0x65);
  Delay_ms(50);
@@ -51,5 +65,5 @@ void uart_debug_Update(void)
  UART1_Write(MAJOR_VERSION);
  Delay_ms(50);
  UART1_Write(MINOR_VERSION);
- 
+
 }

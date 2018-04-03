@@ -11,8 +11,8 @@
 #define int32_t long
 #define uint32_t unsigned long
 
-#define TRUE 1
-#define FALSE 0
+#define TRUE 0
+#define FALSE 1
 
 #define MAJOR_VERSION 0
 #define MINOR_VERSION 4

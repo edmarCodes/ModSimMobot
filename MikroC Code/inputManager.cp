@@ -77,6 +77,11 @@ void inputManager_UpdateManager(void)
  {
  input_manager_state = RIGHT_SIGHT;
   PORTB |= 0x02 ;
+ }else if( PORTB.f4  &&  PORTB.f5 )
+ {
+ input_manager_state = BOTH_SIGHT;
+  PORTB |= 0x01 ;
+  PORTB |= 0x02 ;
  }
  break;
 
@@ -104,7 +109,6 @@ void inputManager_UpdateManager(void)
  input_manager_state = BOTH_SIGHT;
   PORTB |= 0x02 ;
   PORTB |= 0x01 ;
-
  }
 
  break;

@@ -57,19 +57,20 @@ line_manager_state_t lineManager_GetState(void);
 void lineManager_Init(void);
 
 void lineManager_UpdateManager(void);
-#line 6 "C:/Repository/ModSimMobot/MikroC Code/motorManager.c"
+#line 1 "c:/repository/modsimmobot/mikroc code/macro.h"
+#line 7 "C:/Repository/ModSimMobot/MikroC Code/motorManager.c"
  motor_manager_state_t motor_manager_state = MOTOR_INIT;
-#line 13 "C:/Repository/ModSimMobot/MikroC Code/motorManager.c"
+#line 14 "C:/Repository/ModSimMobot/MikroC Code/motorManager.c"
  motor_manager_state_t motorManager_GetState(void)
  {
  return motor_manager_state;
  }
-#line 22 "C:/Repository/ModSimMobot/MikroC Code/motorManager.c"
+#line 23 "C:/Repository/ModSimMobot/MikroC Code/motorManager.c"
 void motorManager_Init(void)
 {
 
 }
-#line 31 "C:/Repository/ModSimMobot/MikroC Code/motorManager.c"
+#line 32 "C:/Repository/ModSimMobot/MikroC Code/motorManager.c"
 void motorManager_UpdateManager(void)
 {
  switch(motor_manager_state)
@@ -81,12 +82,12 @@ void motorManager_UpdateManager(void)
 
 
  case MOTOR_STANDBY:
-#line 48 "C:/Repository/ModSimMobot/MikroC Code/motorManager.c"
- if(inputManager_GetState() == LEFT_SIGHT || inputManager_GetState() == NO_SIGHT)
+#line 49 "C:/Repository/ModSimMobot/MikroC Code/motorManager.c"
+ if(inputManager_GetState() == LEFT_SIGHT || inputManager_GetState() == NO_SIGHT || lineManager_GetState() == PARTIAL_RIGHT || lineManager_GetState() == HALF_RIGHT || lineManager_GetState() == FULL)
  {
  motor_manager_state = SLOW_LEFT;
  }
- else if(inputManager_GetState() == RIGHT_SIGHT)
+ else if(inputManager_GetState() == RIGHT_SIGHT || lineManager_GetState() == PARTIAL_LEFT || lineManager_GetState() == HALF_LEFT)
  {
  motor_manager_state = SLOW_RIGHT;
  }
@@ -154,7 +155,7 @@ void motorManager_UpdateManager(void)
  Delay_ms(1000);
   PWM1_Set_Duty(0) ;
   PWM2_Set_duty(0) ;
- Delay_ms(1500);
+ Delay_ms(500);
 
  motor_manager_state = FAST_FORWARD;
 
@@ -228,7 +229,7 @@ void motorManager_UpdateManager(void)
   PWM1_Set_Duty(204) ;
   PWM2_Set_Duty(204) ;
 
- Delay_ms(2000);
+ Delay_ms(1000);
 
  motor_manager_state = MOTOR_STANDBY;
 
@@ -242,5 +243,112 @@ void motorManager_UpdateManager(void)
 
 void motorManager_UpdateManager2(void)
 {
-#line 251 "C:/Repository/ModSimMobot/MikroC Code/motorManager.c"
+ switch(motor_manager_state)
+ {
+ case MOTOR_INIT:
+
+ motor_manager_state = MOTOR_STANDBY;
+ break;
+
+
+ case MOTOR_STANDBY:
+#line 224 "C:/Repository/ModSimMobot/MikroC Code/motorManager.c"
+ if(inputManager_GetState() == BOTH_SIGHT)
+ {
+ motor_manager_state = BACKWARD;
+ }else if(inputManager_GetState() == LEFT_SIGHT || inputManager_GetState() == NO_SIGHT )
+ {
+ motor_manager_state = SLOW_LEFT;
+ }
+ else if(inputManager_GetState() == RIGHT_SIGHT)
+ {
+ motor_manager_state = SLOW_RIGHT;
+ }
+
+
+ break;
+
+ case SLOW_LEFT:
+  PORTB |= 0x04 ;
+  PORTB &= ~0x08 ;
+  PWM1_Set_Duty(204) ;
+  PWM2_Set_Duty(204) ;
+
+ if(inputManager_GetState() == BOTH_SIGHT)
+ {
+ motor_manager_state = BACKWARD;
+ }else if(inputManager_GetState() == RIGHT_SIGHT)
+ {
+ motor_manager_state = SLOW_RIGHT;
+ }
+
+ break;
+
+ case SLOW_RIGHT:
+  PORTB &= ~0x04 ;
+  PORTB |= 0x08 ;
+  PWM1_Set_Duty(204) ;
+  PWM2_Set_Duty(204) ;
+
+ if(inputManager_GetState() == BOTH_SIGHT)
+ {
+ motor_manager_state = BACKWARD;
+ }
+ else if(inputManager_GetState() == LEFT_SIGHT)
+ {
+ motor_manager_state = SLOW_LEFT;
+ }else if(inputManager_GetState() == RIGHT_SIGHT)
+ {
+ motor_manager_state = SLOW_RIGHT;
+ }
+
+ break;
+
+ case BACKWARD:
+
+
+
+
+
+
+ motor_manager_state = DELAY;
+
+ break;
+
+ case DELAY:
+
+  PORTB &= ~0x04 ;
+  PORTB &= ~0x08 ;
+
+ Delay_ms(500);
+  PWM1_Set_Duty(0) ;
+  PWM2_Set_duty(0) ;
+ Delay_ms(500);
+
+ motor_manager_state = FAST_FORWARD;
+
+ break;
+
+ case FAST_FORWARD:
+
+  PORTB |= 0x04 ;
+  PORTB |= 0x08 ;
+  PWM1_Set_Duty(255) ;
+  PWM2_Set_Duty(255) ;
+
+ if(inputManager_GetState() == NO_SIGHT){
+ motor_manager_state = MOTOR_STANDBY;
+ }
+ else if(inputManager_GetState() == LEFT_SIGHT)
+ {
+ motor_manager_state = SLOW_LEFT;
+ }else if(inputManager_GetState() == RIGHT_SIGHT)
+ {
+ motor_manager_state = SLOW_RIGHT;
+ }
+ break;
+ default:
+ break;
+ }
+
 }

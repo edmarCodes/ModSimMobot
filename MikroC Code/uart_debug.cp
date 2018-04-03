@@ -90,7 +90,7 @@ void uart_debug_Update(void)
  UART1_Write(2);
  Delay_ms(50);
  UART1_Write(motorManager_GetState());
-
+#line 53 "C:/Repository/ModSimMobot/MikroC Code/uart_debug.c"
  Delay_ms(50);
  UART1_Write(0x65);
  Delay_ms(50);

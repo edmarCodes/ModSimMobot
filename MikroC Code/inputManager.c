@@ -75,6 +75,11 @@ void inputManager_UpdateManager(void)
       {
            input_manager_state = RIGHT_SIGHT;
            inputManager_SensorBOn();
+      }else if(inputManager_GetSensorBoolLeft() && inputManager_GetSensorBoolRight())
+      {
+           input_manager_state = BOTH_SIGHT;
+           inputManager_SensorAOn();
+           inputManager_SensorBOn();
       }
       break;
       
@@ -102,7 +107,6 @@ void inputManager_UpdateManager(void)
            input_manager_state = BOTH_SIGHT;
            inputManager_SensorBOn();
            inputManager_SensorAOn();
-           
       }
       
       break;
