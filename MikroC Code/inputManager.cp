@@ -68,16 +68,16 @@ void inputManager_UpdateManager(void)
   PORTB &= ~0x01 ;
   PORTB &= ~0x02 ;
 
- if( PORTB.f4  && ! PORTB.f5 )
+ if(( PORTB.f4 ) && (! PORTB.f5 ))
  {
  input_manager_state = LEFT_SIGHT;
   PORTB |= 0x01 ;
  }
- else if(! PORTB.f4  &&  PORTB.f5 )
+ else if((! PORTB.f4 ) && ( PORTB.f5 ))
  {
  input_manager_state = RIGHT_SIGHT;
   PORTB |= 0x02 ;
- }else if( PORTB.f4  &&  PORTB.f5 )
+ }else if(( PORTB.f4 ) && ( PORTB.f5 ))
  {
  input_manager_state = BOTH_SIGHT;
   PORTB |= 0x01 ;
@@ -88,7 +88,7 @@ void inputManager_UpdateManager(void)
  case LEFT_SIGHT:
 
 
- if(! PORTB.f4  && ! PORTB.f5 )
+ if((! PORTB.f4 ) && (! PORTB.f5 ))
  {
  input_manager_state = NO_SIGHT;
 
@@ -96,7 +96,7 @@ void inputManager_UpdateManager(void)
   PORTB &= ~0x01 ;
 
  }
- else if(! PORTB.f4  &&  PORTB.f5 )
+ else if((! PORTB.f4 ) && ( PORTB.f5 ))
  {
  input_manager_state = RIGHT_SIGHT;
 
@@ -104,7 +104,7 @@ void inputManager_UpdateManager(void)
   PORTB &= ~0x01 ;
 
  }
- else if( PORTB.f4  &&  PORTB.f5 )
+ else if(( PORTB.f4 ) && ( PORTB.f5 ))
  {
  input_manager_state = BOTH_SIGHT;
   PORTB |= 0x02 ;
@@ -117,19 +117,19 @@ void inputManager_UpdateManager(void)
  case RIGHT_SIGHT:
 
 
- if(! PORTB.f4  && ! PORTB.f5 )
+ if((! PORTB.f4 ) && (! PORTB.f5 ))
  {
  input_manager_state = NO_SIGHT;
   PORTB &= ~0x02 ;
   PORTB &= ~0x01 ;
  }
- else if( PORTB.f4  && ! PORTB.f5 )
+ else if(( PORTB.f4 ) && (! PORTB.f5 ))
  {
  input_manager_state = LEFT_SIGHT;
   PORTB &= ~0x02 ;
   PORTB |= 0x01 ;
  }
- else if( PORTB.f4  &&  PORTB.f5 )
+ else if(( PORTB.f4 ) && ( PORTB.f5 ))
  {
  input_manager_state = BOTH_SIGHT;
   PORTB |= 0x02 ;
@@ -140,19 +140,19 @@ void inputManager_UpdateManager(void)
 
  case BOTH_SIGHT:
 
- if( PORTB.f4  && ! PORTB.f5 )
+ if(( PORTB.f4 ) && (! PORTB.f5 ))
  {
  input_manager_state = LEFT_SIGHT;
   PORTB &= ~0x02 ;
   PORTB |= 0x01 ;
  }
- else if(! PORTB.f4  &&  PORTB.f5 )
+ else if((! PORTB.f4 ) && ( PORTB.f5 ))
  {
  input_manager_state = RIGHT_SIGHT;
   PORTB |= 0x02 ;
   PORTB &= ~0x01 ;
  }
- else if(! PORTB.f4  && ! PORTB.f5 )
+ else if((! PORTB.f4 ) && (! PORTB.f5 ))
  {
  input_manager_state = NO_SIGHT;
   PORTB &= ~0x02 ;

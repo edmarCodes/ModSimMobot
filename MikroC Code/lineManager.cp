@@ -35,19 +35,19 @@ void lineManager_UpdateManager(void)
 
  case NO_LINE:
 
- if( !PORTD.f5  && ! !PORTD.f6  && ! !PORTD.f7 )
+ if( ( !PORTD.f5 ) && (! !PORTD.f6 ) && (! !PORTD.f7 ) )
  {
  line_manager_state = PARTIAL_LEFT;
- }else if(! !PORTD.f5  && ! !PORTD.f6  &&  !PORTD.f7 )
+ }else if( (! !PORTD.f5 ) && (! !PORTD.f6 ) && ( !PORTD.f7 ) )
  {
  line_manager_state = PARTIAL_RIGHT;
- }else if( !PORTD.f5  &&  !PORTD.f6  && ! !PORTD.f7 )
+ }else if( ( !PORTD.f5 ) && ( !PORTD.f6 ) && (! !PORTD.f7 ))
  {
  line_manager_state = HALF_LEFT;
- }else if(! !PORTD.f5  &&  !PORTD.f6  &&  !PORTD.f7 )
+ }else if( (! !PORTD.f5 ) && ( !PORTD.f6 ) && ( !PORTD.f7 ) )
  {
  line_manager_state = HALF_RIGHT;
- }else if( !PORTD.f5  &&  !PORTD.f6  &&  !PORTD.f7 )
+ }else if( ( !PORTD.f5 ) && ( !PORTD.f6 ) && ( !PORTD.f7 ) )
  {
  line_manager_state = FULL;
  }
@@ -56,19 +56,19 @@ void lineManager_UpdateManager(void)
 
  case PARTIAL_LEFT:
 
- if(! !PORTD.f5  && ! !PORTD.f6  && ! !PORTD.f7 )
+ if( (! !PORTD.f5 ) && (! !PORTD.f6 ) && (! !PORTD.f7 ) )
  {
  line_manager_state = NO_LINE;
- }else if(! !PORTD.f5  && ! !PORTD.f6  &&  !PORTD.f7 )
+ }else if( (! !PORTD.f5 ) && (! !PORTD.f6 ) && ( !PORTD.f7 ) )
  {
  line_manager_state = PARTIAL_RIGHT;
- }else if( !PORTD.f5  &&  !PORTD.f6  && ! !PORTD.f7 )
+ }else if( ( !PORTD.f5 ) && ( !PORTD.f6 ) && (! !PORTD.f7 ) )
  {
  line_manager_state = HALF_LEFT;
- }else if(! !PORTD.f5  &&  !PORTD.f6  &&  !PORTD.f7 )
+ }else if( (! !PORTD.f5 ) && ( !PORTD.f6 ) && ( !PORTD.f7 ) )
  {
  line_manager_state = HALF_RIGHT;
- }else if( !PORTD.f5  &&  !PORTD.f6  &&  !PORTD.f7 )
+ }else if( ( !PORTD.f5 ) && ( !PORTD.f6 ) && ( !PORTD.f7 ) )
  {
  line_manager_state = FULL;
  }
@@ -77,19 +77,19 @@ void lineManager_UpdateManager(void)
 
  case PARTIAL_RIGHT:
 
- if(! !PORTD.f5  && ! !PORTD.f6  && ! !PORTD.f7 )
+ if( (! !PORTD.f5 ) && (! !PORTD.f6 ) && (! !PORTD.f7 ) )
  {
  line_manager_state = NO_LINE;
- }else if( !PORTD.f5  && ! !PORTD.f6  && ! !PORTD.f7 )
+ }else if( ( !PORTD.f5 ) && (! !PORTD.f6 ) && (! !PORTD.f7 ) )
  {
  line_manager_state = PARTIAL_LEFT;
- }else if( !PORTD.f5  &&  !PORTD.f6  && ! !PORTD.f7 )
+ }else if( ( !PORTD.f5 ) && ( !PORTD.f6 ) && (! !PORTD.f7 ) )
  {
  line_manager_state = HALF_LEFT;
- }else if(! !PORTD.f5  &&  !PORTD.f6  &&  !PORTD.f7 )
+ }else if( (! !PORTD.f5 ) && ( !PORTD.f6 ) && ( !PORTD.f7 ) )
  {
  line_manager_state = HALF_RIGHT;
- }else if( !PORTD.f5  &&  !PORTD.f6  &&  !PORTD.f7 )
+ }else if( ( !PORTD.f5 ) && ( !PORTD.f6 ) && ( !PORTD.f7 ) )
  {
  line_manager_state = FULL;
  }
@@ -98,19 +98,19 @@ void lineManager_UpdateManager(void)
 
  case HALF_LEFT:
 
- if(! !PORTD.f5  && ! !PORTD.f6  && ! !PORTD.f7 )
+ if( (! !PORTD.f5 ) && (! !PORTD.f6 ) && (! !PORTD.f7 ) )
  {
  line_manager_state = NO_LINE;
- }else if( !PORTD.f5  && ! !PORTD.f6  && ! !PORTD.f7 )
+ }else if( ( !PORTD.f5 ) && (! !PORTD.f6 ) && (! !PORTD.f7 ) )
  {
  line_manager_state = PARTIAL_LEFT;
- }else if(! !PORTD.f5  && ! !PORTD.f6  &&  !PORTD.f7 )
+ }else if( (! !PORTD.f5 ) && (! !PORTD.f6 ) && ( !PORTD.f7 ) )
  {
  line_manager_state = PARTIAL_RIGHT;
- }else if(! !PORTD.f5  &&  !PORTD.f6  &&  !PORTD.f7 )
+ }else if( (! !PORTD.f5 ) && ( !PORTD.f6 ) && ( !PORTD.f7 ) )
  {
  line_manager_state = HALF_RIGHT;
- }else if( !PORTD.f5  &&  !PORTD.f6  &&  !PORTD.f7 )
+ }else if( ( !PORTD.f5 ) && ( !PORTD.f6 ) && ( !PORTD.f7 ) )
  {
  line_manager_state = FULL;
  }
@@ -119,19 +119,19 @@ void lineManager_UpdateManager(void)
 
  case HALF_RIGHT:
 
- if(! !PORTD.f5  && ! !PORTD.f6  && ! !PORTD.f7 )
+ if( (! !PORTD.f5 ) && (! !PORTD.f6 ) && (! !PORTD.f7 ) )
  {
  line_manager_state = NO_LINE;
- }else if( !PORTD.f5  && ! !PORTD.f6  && ! !PORTD.f7 )
+ }else if( ( !PORTD.f5 ) && (! !PORTD.f6 ) && (! !PORTD.f7 ) )
  {
  line_manager_state = PARTIAL_LEFT;
- }else if(! !PORTD.f5  && ! !PORTD.f6  &&  !PORTD.f7 )
+ }else if( (! !PORTD.f5 ) && (! !PORTD.f6 ) && ( !PORTD.f7 ) )
  {
  line_manager_state = PARTIAL_RIGHT;
- }else if( !PORTD.f5  &&  !PORTD.f6  && ! !PORTD.f7 )
+ }else if( ( !PORTD.f5 ) && ( !PORTD.f6 ) && (! !PORTD.f7 ) )
  {
  line_manager_state = HALF_LEFT;
- }else if( !PORTD.f5  &&  !PORTD.f6  &&  !PORTD.f7 )
+ }else if( ( !PORTD.f5 ) && ( !PORTD.f6 ) && ( !PORTD.f7 ) )
  {
  line_manager_state = FULL;
  }
@@ -140,19 +140,19 @@ void lineManager_UpdateManager(void)
 
  case FULL:
 
- if(! !PORTD.f5  && ! !PORTD.f6  && ! !PORTD.f7 )
+ if( (! !PORTD.f5 ) && (! !PORTD.f6 ) && (! !PORTD.f7 ) )
  {
  line_manager_state = NO_LINE;
- }else if( !PORTD.f5  && ! !PORTD.f6  && ! !PORTD.f7 )
+ }else if( ( !PORTD.f5 ) && (! !PORTD.f6 ) && (! !PORTD.f7 ) )
  {
  line_manager_state = PARTIAL_LEFT;
- }else if(! !PORTD.f5  && ! !PORTD.f6  &&  !PORTD.f7 )
+ }else if( (! !PORTD.f5 ) && (! !PORTD.f6 ) && ( !PORTD.f7 ) )
  {
  line_manager_state = PARTIAL_RIGHT;
- }else if( !PORTD.f5  &&  !PORTD.f6  && ! !PORTD.f7 )
+ }else if( ( !PORTD.f5 ) && ( !PORTD.f6 ) && (! !PORTD.f7 ) )
  {
  line_manager_state = HALF_LEFT;
- }else if(! !PORTD.f5  &&  !PORTD.f6  &&  !PORTD.f7 )
+ }else if( (! !PORTD.f5 ) && ( !PORTD.f6 ) && ( !PORTD.f7 ) )
  {
  line_manager_state = HALF_RIGHT;
  }
@@ -160,7 +160,6 @@ void lineManager_UpdateManager(void)
  break;
 
  default:
- line_manager_state = NO_LINE;
  break;
  }
 }

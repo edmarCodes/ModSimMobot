@@ -97,14 +97,5 @@ void uart_debug_Update(void)
  UART1_Write(3);
  Delay_ms(50);
  UART1_Write(lineManager_GetState());
-
- Delay_ms(50);
- UART1_Write(0x65);
- Delay_ms(50);
- UART1_Write(9);
- Delay_ms(50);
- UART1_Write( 0 );
- Delay_ms(50);
- UART1_Write( 4 );
-
+#line 69 "C:/Repository/ModSimMobot/MikroC Code/uart_debug.c"
 }

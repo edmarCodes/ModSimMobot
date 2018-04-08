@@ -46,18 +46,20 @@ void motorManager_UpdateManager(void)
          motorManager_MotorAOff();
          motorManager_MotorBOff();*/
 
-          if(inputManager_GetState() == LEFT_SIGHT || inputManager_GetState() == NO_SIGHT || lineManager_GetState() == PARTIAL_RIGHT || lineManager_GetState() == HALF_RIGHT || lineManager_GetState() == FULL)
-          {
-               motor_manager_state = SLOW_LEFT;
-          }
-          else if(inputManager_GetState() == RIGHT_SIGHT || lineManager_GetState() == PARTIAL_LEFT || lineManager_GetState() == HALF_LEFT)
-          {
-               motor_manager_state = SLOW_RIGHT;
-          }
-          else if(inputManager_GetState() == BOTH_SIGHT)
+         motor_manager_state = SLOW_LEFT;
+         if(inputManager_GetState() == BOTH_SIGHT)
           {
                motor_manager_state = BACKWARD;
           }
+          else if( (inputManager_GetState() == LEFT_SIGHT) || (inputManager_GetState() == NO_SIGHT) || (lineManager_GetState() == PARTIAL_RIGHT) || (lineManager_GetState() == HALF_RIGHT) || (lineManager_GetState() == FULL) )
+          {
+               motor_manager_state = SLOW_LEFT;
+          }
+          else if( (inputManager_GetState() == RIGHT_SIGHT) || (lineManager_GetState() == PARTIAL_LEFT) || (lineManager_GetState() == HALF_LEFT) )
+          {
+               motor_manager_state = SLOW_RIGHT;
+          }
+
 
 
          break;
@@ -75,7 +77,8 @@ void motorManager_UpdateManager(void)
           else if(inputManager_GetState() == BOTH_SIGHT)
           {
                   motor_manager_state = BACKWARD;
-          }else if(lineManager_GetState() == HALF_LEFT || lineManager_GetState() == FULL || lineManager_GetState() == PARTIAL_LEFT){
+          }
+          else if( (lineManager_GetState() == HALF_LEFT) || (lineManager_GetState() == FULL) || (lineManager_GetState() == PARTIAL_LEFT) ){
                   motor_manager_state = LINE_RIGHT;
           }
          break;
@@ -93,7 +96,7 @@ void motorManager_UpdateManager(void)
          else if(inputManager_GetState() == BOTH_SIGHT)
          {
                   motor_manager_state = BACKWARD;
-         }else if(lineManager_GetState() == HALF_RIGHT || lineManager_GetState() == FULL || lineManager_GetState() == PARTIAL_RIGHT){
+         }else if( (lineManager_GetState() == HALF_RIGHT) || (lineManager_GetState() == FULL) || (lineManager_GetState() == PARTIAL_RIGHT) ){
                   motor_manager_state = LINE_LEFT;
          }
          
@@ -101,10 +104,10 @@ void motorManager_UpdateManager(void)
          
     case  BACKWARD:
     
-         motorManager_MotorAMoveBackward();
+         /*motorManager_MotorAMoveBackward();
          motorManager_MotorBMoveBackward();
          motorManager_MotorAMoveSlow();
-         motorManager_MotorBMoveSlow();
+         motorManager_MotorBMoveSlow();*/
 
          motor_manager_state = DELAY;
 
@@ -112,14 +115,13 @@ void motorManager_UpdateManager(void)
           
     case DELAY:
 
-         motorManager_MotorAMoveBackward();
-         motorManager_MotorBMoveBackward();
+         //motorManager_MotorAMoveBackward();
+         //motorManager_MotorBMoveBackward();
 
-         Delay_ms(1000);
+         //Delay_ms(1000);
          motorManager_MotorAOff();
          motorManager_MotorBOff();
          Delay_ms(500);
-
          motor_manager_state = FAST_FORWARD;
 
          break;
@@ -130,8 +132,17 @@ void motorManager_UpdateManager(void)
          motorManager_MotorBMoveForward();
          motorManager_MotorAMoveFast();
          motorManager_MotorBMoveFast();
-          
-         if(inputManager_GetState() == NO_SIGHT && lineManager_GetState() == NO_LINE){
+
+         
+         if(inputManager_GetState() == BOTH_SIGHT && (lineManager_GetState() == NO_LINE))
+         {
+          motor_manager_state = FAST_FORWARD;
+         }else if( (inputManager_GetState()) == BOTH_SIGHT && ((lineManager_GetState() == FULL) || (lineManager_GetState() == PARTIAL_LEFT)
+         || (lineManager_GetState() == PARTIAL_RIGHT) || (lineManager_GetState() == HALF_LEFT) || (lineManager_GetState() == HALF_RIGHT)))
+         {
+            motor_manager_state = LINE_BACKWARD;
+         }
+         else if( (inputManager_GetState() == NO_SIGHT) && (lineManager_GetState() == NO_LINE) ){
             motor_manager_state = MOTOR_STANDBY;
          }else if(inputManager_GetState() == LEFT_SIGHT)
          {
@@ -139,8 +150,8 @@ void motorManager_UpdateManager(void)
          }else if(inputManager_GetState() == RIGHT_SIGHT)
          {
             motor_manager_state = SLOW_RIGHT;
-         }else if(inputManager_GetState() == NO_SIGHT && (lineManager_GetState() == FULL || lineManager_GetState() == PARTIAL_LEFT 
-         || lineManager_GetState() == PARTIAL_RIGHT || lineManager_GetState() == HALF_LEFT || lineManager_GetState() == HALF_RIGHT))
+         }else if( (inputManager_GetState() == NO_SIGHT) && ((lineManager_GetState() == FULL) || (lineManager_GetState() == PARTIAL_LEFT)
+         || (lineManager_GetState() == PARTIAL_RIGHT) || (lineManager_GetState() == HALF_LEFT) || (lineManager_GetState() == HALF_RIGHT)))
          {
             motor_manager_state = LINE_BACKWARD;
          }
@@ -148,8 +159,8 @@ void motorManager_UpdateManager(void)
    
      case LINE_LEFT:
      
-         motorManager_MotorAMoveBackward();
-         motorManager_MotorBMoveForward();
+         motorManager_MotorAMoveForward();
+         motorManager_MotorBMoveBackward();
          motorManager_MotorAMoveSlow();
          motorManager_MotorBMoveSlow();
          
@@ -160,9 +171,8 @@ void motorManager_UpdateManager(void)
          break;
 
      case LINE_RIGHT:
-     
-         motorManager_MotorAMoveForward();
-         motorManager_MotorBMoveBackward();
+         motorManager_MotorAMoveBackward();
+         motorManager_MotorBMoveForward();
          motorManager_MotorAMoveSlow();
          motorManager_MotorBMoveSlow();
 
@@ -179,7 +189,7 @@ void motorManager_UpdateManager(void)
           motorManager_MotorAMoveSlow();
           motorManager_MotorBMoveSlow();
           
-          Delay_ms(1000);
+          Delay_ms(2000);
           
           motor_manager_state = MOTOR_STANDBY;
           
@@ -192,7 +202,7 @@ void motorManager_UpdateManager(void)
           motorManager_MotorAMoveSlow();
           motorManager_MotorBMoveSlow();
           
-          Delay_ms(1000);
+          Delay_ms(2000);
           
           motor_manager_state = MOTOR_STANDBY;
           
@@ -220,11 +230,13 @@ void motorManager_UpdateManager2(void)
          motorManager_MotorBMoveBackward();
          motorManager_MotorAOff();
          motorManager_MotorBOff();*/
+         
+         motor_manager_state = SLOW_LEFT;
 
           if(inputManager_GetState() == BOTH_SIGHT)
           {
                motor_manager_state = BACKWARD;
-          }else if(inputManager_GetState() == LEFT_SIGHT || inputManager_GetState() == NO_SIGHT )
+          }else if((inputManager_GetState() == LEFT_SIGHT) || (inputManager_GetState() == NO_SIGHT) )
           {
                motor_manager_state = SLOW_LEFT;
           }
@@ -285,8 +297,8 @@ void motorManager_UpdateManager2(void)
 
     case DELAY:
 
-         motorManager_MotorAMoveBackward();
-         motorManager_MotorBMoveBackward();
+         //motorManager_MotorAMoveBackward();
+         //motorManager_MotorBMoveBackward();
 
          Delay_ms(500);
          motorManager_MotorAOff();

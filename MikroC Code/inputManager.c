@@ -66,16 +66,16 @@ void inputManager_UpdateManager(void)
       inputManager_SensorAOff();
       inputManager_SensorBOff();
       
-      if(inputManager_GetSensorBoolLeft() && !inputManager_GetSensorBoolRight())
+      if((inputManager_GetSensorBoolLeft()) && (!inputManager_GetSensorBoolRight()))
       {
             input_manager_state = LEFT_SIGHT;
             inputManager_SensorAOn();
       }
-      else if(!inputManager_GetSensorBoolLeft() && inputManager_GetSensorBoolRight())
+      else if((!inputManager_GetSensorBoolLeft()) && (inputManager_GetSensorBoolRight()))
       {
            input_manager_state = RIGHT_SIGHT;
            inputManager_SensorBOn();
-      }else if(inputManager_GetSensorBoolLeft() && inputManager_GetSensorBoolRight())
+      }else if((inputManager_GetSensorBoolLeft()) && (inputManager_GetSensorBoolRight()))
       {
            input_manager_state = BOTH_SIGHT;
            inputManager_SensorAOn();
@@ -86,7 +86,7 @@ void inputManager_UpdateManager(void)
       case LEFT_SIGHT:
       
       
-      if(!inputManager_GetSensorBoolLeft() && !inputManager_GetSensorBoolRight())
+      if((!inputManager_GetSensorBoolLeft()) && (!inputManager_GetSensorBoolRight()))
       {
             input_manager_state = NO_SIGHT;
             
@@ -94,7 +94,7 @@ void inputManager_UpdateManager(void)
             inputManager_SensorAOff();
             
       }
-      else if(!inputManager_GetSensorBoolLeft() && inputManager_GetSensorBoolRight())
+      else if((!inputManager_GetSensorBoolLeft()) && (inputManager_GetSensorBoolRight()))
       {
             input_manager_state = RIGHT_SIGHT;
             
@@ -102,7 +102,7 @@ void inputManager_UpdateManager(void)
             inputManager_SensorAOff();
             
       }
-      else if(inputManager_GetSensorBoolLeft() && inputManager_GetSensorBoolRight())
+      else if((inputManager_GetSensorBoolLeft()) && (inputManager_GetSensorBoolRight()))
       {
            input_manager_state = BOTH_SIGHT;
            inputManager_SensorBOn();
@@ -115,19 +115,19 @@ void inputManager_UpdateManager(void)
       case RIGHT_SIGHT:
       
       
-      if(!inputManager_GetSensorBoolLeft() && !inputManager_GetSensorBoolRight())
+      if((!inputManager_GetSensorBoolLeft()) && (!inputManager_GetSensorBoolRight()))
       {
             input_manager_state = NO_SIGHT;
             inputManager_SensorBOff();
             inputManager_SensorAOff();
       }
-      else if(inputManager_GetSensorBoolLeft() && !inputManager_GetSensorBoolRight())
+      else if((inputManager_GetSensorBoolLeft()) && (!inputManager_GetSensorBoolRight()))
       {
             input_manager_state = LEFT_SIGHT;
             inputManager_SensorBOff();
             inputManager_SensorAOn();
       }
-      else if(inputManager_GetSensorBoolLeft() && inputManager_GetSensorBoolRight())
+      else if((inputManager_GetSensorBoolLeft()) && (inputManager_GetSensorBoolRight()))
       {
            input_manager_state = BOTH_SIGHT;
            inputManager_SensorBOn();
@@ -138,19 +138,19 @@ void inputManager_UpdateManager(void)
       
       case BOTH_SIGHT:
       
-      if(inputManager_GetSensorBoolLeft() && !inputManager_GetSensorBoolRight())
+      if((inputManager_GetSensorBoolLeft()) && (!inputManager_GetSensorBoolRight()))
       {
             input_manager_state = LEFT_SIGHT;
             inputManager_SensorBOff();
             inputManager_SensorAOn();
       }
-      else if(!inputManager_GetSensorBoolLeft() && inputManager_GetSensorBoolRight())
+      else if((!inputManager_GetSensorBoolLeft()) && (inputManager_GetSensorBoolRight()))
       {
            input_manager_state = RIGHT_SIGHT;
            inputManager_SensorBOn();
            inputManager_SensorAOff();
       }
-      else if(!inputManager_GetSensorBoolLeft() && !inputManager_GetSensorBoolRight())
+      else if((!inputManager_GetSensorBoolLeft()) && (!inputManager_GetSensorBoolRight()))
       {
            input_manager_state = NO_SIGHT;
            inputManager_SensorBOff();

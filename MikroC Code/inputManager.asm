@@ -61,7 +61,7 @@ L_inputManager_UpdateManager6:
 	BCF        PORTB+0, 0
 ;inputManager.c,67 :: 		inputManager_SensorBOff();
 	BCF        PORTB+0, 1
-;inputManager.c,69 :: 		if(inputManager_GetSensorBoolLeft() && !inputManager_GetSensorBoolRight())
+;inputManager.c,69 :: 		if((inputManager_GetSensorBoolLeft()) && (!inputManager_GetSensorBoolRight()))
 	BTFSS      PORTB+0, 4
 	GOTO       L_inputManager_UpdateManager9
 	BTFSC      PORTB+0, 5
@@ -75,7 +75,7 @@ L__inputManager_UpdateManager66:
 ;inputManager.c,73 :: 		}
 	GOTO       L_inputManager_UpdateManager10
 L_inputManager_UpdateManager9:
-;inputManager.c,74 :: 		else if(!inputManager_GetSensorBoolLeft() && inputManager_GetSensorBoolRight())
+;inputManager.c,74 :: 		else if((!inputManager_GetSensorBoolLeft()) && (inputManager_GetSensorBoolRight()))
 	BTFSC      PORTB+0, 4
 	GOTO       L_inputManager_UpdateManager13
 	BTFSS      PORTB+0, 5
@@ -86,7 +86,7 @@ L__inputManager_UpdateManager65:
 	MOVWF      _input_manager_state+0
 ;inputManager.c,77 :: 		inputManager_SensorBOn();
 	BSF        PORTB+0, 1
-;inputManager.c,78 :: 		}else if(inputManager_GetSensorBoolLeft() && inputManager_GetSensorBoolRight())
+;inputManager.c,78 :: 		}else if((inputManager_GetSensorBoolLeft()) && (inputManager_GetSensorBoolRight()))
 	GOTO       L_inputManager_UpdateManager14
 L_inputManager_UpdateManager13:
 	BTFSS      PORTB+0, 4
@@ -109,7 +109,7 @@ L_inputManager_UpdateManager10:
 	GOTO       L_inputManager_UpdateManager5
 ;inputManager.c,86 :: 		case LEFT_SIGHT:
 L_inputManager_UpdateManager18:
-;inputManager.c,89 :: 		if(!inputManager_GetSensorBoolLeft() && !inputManager_GetSensorBoolRight())
+;inputManager.c,89 :: 		if((!inputManager_GetSensorBoolLeft()) && (!inputManager_GetSensorBoolRight()))
 	BTFSC      PORTB+0, 4
 	GOTO       L_inputManager_UpdateManager21
 	BTFSC      PORTB+0, 5
@@ -124,7 +124,7 @@ L__inputManager_UpdateManager63:
 ;inputManager.c,96 :: 		}
 	GOTO       L_inputManager_UpdateManager22
 L_inputManager_UpdateManager21:
-;inputManager.c,97 :: 		else if(!inputManager_GetSensorBoolLeft() && inputManager_GetSensorBoolRight())
+;inputManager.c,97 :: 		else if((!inputManager_GetSensorBoolLeft()) && (inputManager_GetSensorBoolRight()))
 	BTFSC      PORTB+0, 4
 	GOTO       L_inputManager_UpdateManager25
 	BTFSS      PORTB+0, 5
@@ -140,7 +140,7 @@ L__inputManager_UpdateManager62:
 ;inputManager.c,104 :: 		}
 	GOTO       L_inputManager_UpdateManager26
 L_inputManager_UpdateManager25:
-;inputManager.c,105 :: 		else if(inputManager_GetSensorBoolLeft() && inputManager_GetSensorBoolRight())
+;inputManager.c,105 :: 		else if((inputManager_GetSensorBoolLeft()) && (inputManager_GetSensorBoolRight()))
 	BTFSS      PORTB+0, 4
 	GOTO       L_inputManager_UpdateManager29
 	BTFSS      PORTB+0, 5
@@ -161,7 +161,7 @@ L_inputManager_UpdateManager22:
 	GOTO       L_inputManager_UpdateManager5
 ;inputManager.c,115 :: 		case RIGHT_SIGHT:
 L_inputManager_UpdateManager30:
-;inputManager.c,118 :: 		if(!inputManager_GetSensorBoolLeft() && !inputManager_GetSensorBoolRight())
+;inputManager.c,118 :: 		if((!inputManager_GetSensorBoolLeft()) && (!inputManager_GetSensorBoolRight()))
 	BTFSC      PORTB+0, 4
 	GOTO       L_inputManager_UpdateManager33
 	BTFSC      PORTB+0, 5
@@ -176,7 +176,7 @@ L__inputManager_UpdateManager60:
 ;inputManager.c,123 :: 		}
 	GOTO       L_inputManager_UpdateManager34
 L_inputManager_UpdateManager33:
-;inputManager.c,124 :: 		else if(inputManager_GetSensorBoolLeft() && !inputManager_GetSensorBoolRight())
+;inputManager.c,124 :: 		else if((inputManager_GetSensorBoolLeft()) && (!inputManager_GetSensorBoolRight()))
 	BTFSS      PORTB+0, 4
 	GOTO       L_inputManager_UpdateManager37
 	BTFSC      PORTB+0, 5
@@ -192,7 +192,7 @@ L__inputManager_UpdateManager59:
 ;inputManager.c,129 :: 		}
 	GOTO       L_inputManager_UpdateManager38
 L_inputManager_UpdateManager37:
-;inputManager.c,130 :: 		else if(inputManager_GetSensorBoolLeft() && inputManager_GetSensorBoolRight())
+;inputManager.c,130 :: 		else if((inputManager_GetSensorBoolLeft()) && (inputManager_GetSensorBoolRight()))
 	BTFSS      PORTB+0, 4
 	GOTO       L_inputManager_UpdateManager41
 	BTFSS      PORTB+0, 5
@@ -213,7 +213,7 @@ L_inputManager_UpdateManager34:
 	GOTO       L_inputManager_UpdateManager5
 ;inputManager.c,139 :: 		case BOTH_SIGHT:
 L_inputManager_UpdateManager42:
-;inputManager.c,141 :: 		if(inputManager_GetSensorBoolLeft() && !inputManager_GetSensorBoolRight())
+;inputManager.c,141 :: 		if((inputManager_GetSensorBoolLeft()) && (!inputManager_GetSensorBoolRight()))
 	BTFSS      PORTB+0, 4
 	GOTO       L_inputManager_UpdateManager45
 	BTFSC      PORTB+0, 5
@@ -229,7 +229,7 @@ L__inputManager_UpdateManager57:
 ;inputManager.c,146 :: 		}
 	GOTO       L_inputManager_UpdateManager46
 L_inputManager_UpdateManager45:
-;inputManager.c,147 :: 		else if(!inputManager_GetSensorBoolLeft() && inputManager_GetSensorBoolRight())
+;inputManager.c,147 :: 		else if((!inputManager_GetSensorBoolLeft()) && (inputManager_GetSensorBoolRight()))
 	BTFSC      PORTB+0, 4
 	GOTO       L_inputManager_UpdateManager49
 	BTFSS      PORTB+0, 5
@@ -245,7 +245,7 @@ L__inputManager_UpdateManager56:
 ;inputManager.c,152 :: 		}
 	GOTO       L_inputManager_UpdateManager50
 L_inputManager_UpdateManager49:
-;inputManager.c,153 :: 		else if(!inputManager_GetSensorBoolLeft() && !inputManager_GetSensorBoolRight())
+;inputManager.c,153 :: 		else if((!inputManager_GetSensorBoolLeft()) && (!inputManager_GetSensorBoolRight()))
 	BTFSC      PORTB+0, 4
 	GOTO       L_inputManager_UpdateManager53
 	BTFSC      PORTB+0, 5

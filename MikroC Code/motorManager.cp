@@ -83,18 +83,20 @@ void motorManager_UpdateManager(void)
 
  case MOTOR_STANDBY:
 #line 49 "C:/Repository/ModSimMobot/MikroC Code/motorManager.c"
- if(inputManager_GetState() == LEFT_SIGHT || inputManager_GetState() == NO_SIGHT || lineManager_GetState() == PARTIAL_RIGHT || lineManager_GetState() == HALF_RIGHT || lineManager_GetState() == FULL)
- {
  motor_manager_state = SLOW_LEFT;
- }
- else if(inputManager_GetState() == RIGHT_SIGHT || lineManager_GetState() == PARTIAL_LEFT || lineManager_GetState() == HALF_LEFT)
- {
- motor_manager_state = SLOW_RIGHT;
- }
- else if(inputManager_GetState() == BOTH_SIGHT)
+ if(inputManager_GetState() == BOTH_SIGHT)
  {
  motor_manager_state = BACKWARD;
  }
+ else if( (inputManager_GetState() == LEFT_SIGHT) || (inputManager_GetState() == NO_SIGHT) || (lineManager_GetState() == PARTIAL_RIGHT) || (lineManager_GetState() == HALF_RIGHT) || (lineManager_GetState() == FULL) )
+ {
+ motor_manager_state = SLOW_LEFT;
+ }
+ else if( (inputManager_GetState() == RIGHT_SIGHT) || (lineManager_GetState() == PARTIAL_LEFT) || (lineManager_GetState() == HALF_LEFT) )
+ {
+ motor_manager_state = SLOW_RIGHT;
+ }
+
 
 
  break;
@@ -112,7 +114,8 @@ void motorManager_UpdateManager(void)
  else if(inputManager_GetState() == BOTH_SIGHT)
  {
  motor_manager_state = BACKWARD;
- }else if(lineManager_GetState() == HALF_LEFT || lineManager_GetState() == FULL || lineManager_GetState() == PARTIAL_LEFT){
+ }
+ else if( (lineManager_GetState() == HALF_LEFT) || (lineManager_GetState() == FULL) || (lineManager_GetState() == PARTIAL_LEFT) ){
  motor_manager_state = LINE_RIGHT;
  }
  break;
@@ -130,33 +133,27 @@ void motorManager_UpdateManager(void)
  else if(inputManager_GetState() == BOTH_SIGHT)
  {
  motor_manager_state = BACKWARD;
- }else if(lineManager_GetState() == HALF_RIGHT || lineManager_GetState() == FULL || lineManager_GetState() == PARTIAL_RIGHT){
+ }else if( (lineManager_GetState() == HALF_RIGHT) || (lineManager_GetState() == FULL) || (lineManager_GetState() == PARTIAL_RIGHT) ){
  motor_manager_state = LINE_LEFT;
  }
 
  break;
 
  case BACKWARD:
-
-  PORTB &= ~0x04 ;
-  PORTB &= ~0x08 ;
-  PWM1_Set_Duty(204) ;
-  PWM2_Set_Duty(204) ;
-
+#line 112 "C:/Repository/ModSimMobot/MikroC Code/motorManager.c"
  motor_manager_state = DELAY;
 
  break;
 
  case DELAY:
 
-  PORTB &= ~0x04 ;
-  PORTB &= ~0x08 ;
 
- Delay_ms(1000);
+
+
+
   PWM1_Set_Duty(0) ;
   PWM2_Set_duty(0) ;
  Delay_ms(500);
-
  motor_manager_state = FAST_FORWARD;
 
  break;
@@ -168,7 +165,16 @@ void motorManager_UpdateManager(void)
   PWM1_Set_Duty(255) ;
   PWM2_Set_Duty(255) ;
 
- if(inputManager_GetState() == NO_SIGHT && lineManager_GetState() == NO_LINE){
+
+ if(inputManager_GetState() == BOTH_SIGHT && (lineManager_GetState() == NO_LINE))
+ {
+ motor_manager_state = FAST_FORWARD;
+ }else if( (inputManager_GetState()) == BOTH_SIGHT && ((lineManager_GetState() == FULL) || (lineManager_GetState() == PARTIAL_LEFT)
+ || (lineManager_GetState() == PARTIAL_RIGHT) || (lineManager_GetState() == HALF_LEFT) || (lineManager_GetState() == HALF_RIGHT)))
+ {
+ motor_manager_state = LINE_BACKWARD;
+ }
+ else if( (inputManager_GetState() == NO_SIGHT) && (lineManager_GetState() == NO_LINE) ){
  motor_manager_state = MOTOR_STANDBY;
  }else if(inputManager_GetState() == LEFT_SIGHT)
  {
@@ -176,8 +182,8 @@ void motorManager_UpdateManager(void)
  }else if(inputManager_GetState() == RIGHT_SIGHT)
  {
  motor_manager_state = SLOW_RIGHT;
- }else if(inputManager_GetState() == NO_SIGHT && (lineManager_GetState() == FULL || lineManager_GetState() == PARTIAL_LEFT
- || lineManager_GetState() == PARTIAL_RIGHT || lineManager_GetState() == HALF_LEFT || lineManager_GetState() == HALF_RIGHT))
+ }else if( (inputManager_GetState() == NO_SIGHT) && ((lineManager_GetState() == FULL) || (lineManager_GetState() == PARTIAL_LEFT)
+ || (lineManager_GetState() == PARTIAL_RIGHT) || (lineManager_GetState() == HALF_LEFT) || (lineManager_GetState() == HALF_RIGHT)))
  {
  motor_manager_state = LINE_BACKWARD;
  }
@@ -185,8 +191,8 @@ void motorManager_UpdateManager(void)
 
  case LINE_LEFT:
 
-  PORTB &= ~0x04 ;
-  PORTB |= 0x08 ;
+  PORTB |= 0x04 ;
+  PORTB &= ~0x08 ;
   PWM1_Set_Duty(204) ;
   PWM2_Set_Duty(204) ;
 
@@ -197,9 +203,8 @@ void motorManager_UpdateManager(void)
  break;
 
  case LINE_RIGHT:
-
-  PORTB |= 0x04 ;
-  PORTB &= ~0x08 ;
+  PORTB &= ~0x04 ;
+  PORTB |= 0x08 ;
   PWM1_Set_Duty(204) ;
   PWM2_Set_Duty(204) ;
 
@@ -216,7 +221,7 @@ void motorManager_UpdateManager(void)
   PWM1_Set_Duty(204) ;
   PWM2_Set_Duty(204) ;
 
- Delay_ms(1000);
+ Delay_ms(2000);
 
  motor_manager_state = MOTOR_STANDBY;
 
@@ -229,7 +234,7 @@ void motorManager_UpdateManager(void)
   PWM1_Set_Duty(204) ;
   PWM2_Set_Duty(204) ;
 
- Delay_ms(1000);
+ Delay_ms(2000);
 
  motor_manager_state = MOTOR_STANDBY;
 
@@ -252,11 +257,13 @@ void motorManager_UpdateManager2(void)
 
 
  case MOTOR_STANDBY:
-#line 224 "C:/Repository/ModSimMobot/MikroC Code/motorManager.c"
+#line 234 "C:/Repository/ModSimMobot/MikroC Code/motorManager.c"
+ motor_manager_state = SLOW_LEFT;
+
  if(inputManager_GetState() == BOTH_SIGHT)
  {
  motor_manager_state = BACKWARD;
- }else if(inputManager_GetState() == LEFT_SIGHT || inputManager_GetState() == NO_SIGHT )
+ }else if((inputManager_GetState() == LEFT_SIGHT) || (inputManager_GetState() == NO_SIGHT) )
  {
  motor_manager_state = SLOW_LEFT;
  }
@@ -317,8 +324,8 @@ void motorManager_UpdateManager2(void)
 
  case DELAY:
 
-  PORTB &= ~0x04 ;
-  PORTB &= ~0x08 ;
+
+
 
  Delay_ms(500);
   PWM1_Set_Duty(0) ;

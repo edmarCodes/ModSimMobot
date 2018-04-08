@@ -6,6 +6,7 @@
 - Modify state table on motor manager
 - Add new states on motor manager (LINE_LEFT, LINE_RIGHT, LINE_BACKWARD, LINE_FORWARD) to deal with line sensors
 - Modify the code base on the new state table
+- uart_Debug_Update() function call on infinite loop in Sumobot_simple.c is just for debugging purposes, it can be used on simulation using Proteus. Comment that line to remove the delay for the action of each manager if you will test the code on actual sumobot.
 ## v0.3
 - Define line tracer manager
 - Modify state table for motor manager, integrating line manager

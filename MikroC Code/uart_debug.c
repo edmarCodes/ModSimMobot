@@ -57,13 +57,13 @@ void uart_debug_Update(void)
  Delay_ms(50);
  UART1_Write(lineManager_GetState());
 
- Delay_ms(50);
+ /*Delay_ms(50);
  UART1_Write(0x65);
  Delay_ms(50);
  UART1_Write(9);
  Delay_ms(50);
  UART1_Write(MAJOR_VERSION);
  Delay_ms(50);
- UART1_Write(MINOR_VERSION);
+ UART1_Write(MINOR_VERSION); */
 
 }
