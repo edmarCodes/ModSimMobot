@@ -11,12 +11,12 @@ main
 	inputManager_UpdateManager
 	lineManager_UpdateManager
 	motorManager_UpdateManager
+		inputManager_GetState
+		lineManager_GetState
 		PWM1_Set_Duty
 			Mul_16x16_U
 		PWM2_Set_Duty
 			Mul_16x16_U
-		inputManager_GetState
-		lineManager_GetState
 	uart_debug_Update
 		UART1_Write
 		inputManager_GetState

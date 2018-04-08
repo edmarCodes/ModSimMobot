@@ -33,19 +33,19 @@ void lineManager_UpdateManager(void)
      
          case NO_LINE:
          
-             if(lineManager_GetLineBoolLeft() && !lineManager_GetLineBoolMiddle() && !lineManager_GetLineBoolRight())
+             if( (lineManager_GetLineBoolLeft()) && (!lineManager_GetLineBoolMiddle()) && (!lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = PARTIAL_LEFT;
-             }else if(!lineManager_GetLineBoolLeft() && !lineManager_GetLineBoolMiddle() && lineManager_GetLineBoolRight())
+             }else if( (!lineManager_GetLineBoolLeft()) && (!lineManager_GetLineBoolMiddle()) && (lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = PARTIAL_RIGHT;
-             }else if(lineManager_GetLineBoolLeft() && lineManager_GetLineBoolMiddle() && !lineManager_GetLineBoolRight())
+             }else if( (lineManager_GetLineBoolLeft()) && (lineManager_GetLineBoolMiddle()) && (!lineManager_GetLineBoolRight()))
              {
                 line_manager_state = HALF_LEFT;
-             }else if(!lineManager_GetLineBoolLeft() && lineManager_GetLineBoolMiddle() && lineManager_GetLineBoolRight())
+             }else if( (!lineManager_GetLineBoolLeft()) && (lineManager_GetLineBoolMiddle()) && (lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = HALF_RIGHT;
-             }else if(lineManager_GetLineBoolLeft() && lineManager_GetLineBoolMiddle() && lineManager_GetLineBoolRight())
+             }else if( (lineManager_GetLineBoolLeft()) && (lineManager_GetLineBoolMiddle()) && (lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = FULL;
              }
@@ -54,19 +54,19 @@ void lineManager_UpdateManager(void)
          
          case PARTIAL_LEFT:
          
-              if(!lineManager_GetLineBoolLeft() && !lineManager_GetLineBoolMiddle() && !lineManager_GetLineBoolRight())
+              if( (!lineManager_GetLineBoolLeft()) && (!lineManager_GetLineBoolMiddle()) && (!lineManager_GetLineBoolRight()) )
               {
                 line_manager_state = NO_LINE;
-             }else if(!lineManager_GetLineBoolLeft() && !lineManager_GetLineBoolMiddle() && lineManager_GetLineBoolRight())
+             }else if( (!lineManager_GetLineBoolLeft()) && (!lineManager_GetLineBoolMiddle()) && (lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = PARTIAL_RIGHT;
-             }else if(lineManager_GetLineBoolLeft() && lineManager_GetLineBoolMiddle() && !lineManager_GetLineBoolRight())
+             }else if( (lineManager_GetLineBoolLeft()) && (lineManager_GetLineBoolMiddle()) && (!lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = HALF_LEFT;
-             }else if(!lineManager_GetLineBoolLeft() && lineManager_GetLineBoolMiddle() && lineManager_GetLineBoolRight())
+             }else if( (!lineManager_GetLineBoolLeft()) && (lineManager_GetLineBoolMiddle()) && (lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = HALF_RIGHT;
-             }else if(lineManager_GetLineBoolLeft() && lineManager_GetLineBoolMiddle() && lineManager_GetLineBoolRight())
+             }else if( (lineManager_GetLineBoolLeft()) && (lineManager_GetLineBoolMiddle()) && (lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = FULL;
              }
@@ -75,19 +75,19 @@ void lineManager_UpdateManager(void)
          
          case PARTIAL_RIGHT:
          
-              if(!lineManager_GetLineBoolLeft() && !lineManager_GetLineBoolMiddle() && !lineManager_GetLineBoolRight())
+              if( (!lineManager_GetLineBoolLeft()) && (!lineManager_GetLineBoolMiddle()) && (!lineManager_GetLineBoolRight()) )
               {
                 line_manager_state = NO_LINE;
-             }else if(lineManager_GetLineBoolLeft() && !lineManager_GetLineBoolMiddle() && !lineManager_GetLineBoolRight())
+             }else if( (lineManager_GetLineBoolLeft()) && (!lineManager_GetLineBoolMiddle()) && (!lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = PARTIAL_LEFT;
-             }else if(lineManager_GetLineBoolLeft() && lineManager_GetLineBoolMiddle() && !lineManager_GetLineBoolRight())
+             }else if( (lineManager_GetLineBoolLeft()) && (lineManager_GetLineBoolMiddle()) && (!lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = HALF_LEFT;
-             }else if(!lineManager_GetLineBoolLeft() && lineManager_GetLineBoolMiddle() && lineManager_GetLineBoolRight())
+             }else if( (!lineManager_GetLineBoolLeft()) && (lineManager_GetLineBoolMiddle()) && (lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = HALF_RIGHT;
-             }else if(lineManager_GetLineBoolLeft() && lineManager_GetLineBoolMiddle() && lineManager_GetLineBoolRight())
+             }else if( (lineManager_GetLineBoolLeft()) && (lineManager_GetLineBoolMiddle()) && (lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = FULL;
              }
@@ -96,19 +96,19 @@ void lineManager_UpdateManager(void)
          
          case HALF_LEFT:
 
-              if(!lineManager_GetLineBoolLeft() && !lineManager_GetLineBoolMiddle() && !lineManager_GetLineBoolRight())
+              if( (!lineManager_GetLineBoolLeft()) && (!lineManager_GetLineBoolMiddle()) && (!lineManager_GetLineBoolRight()) )
               {
                 line_manager_state = NO_LINE;
-             }else if(lineManager_GetLineBoolLeft() && !lineManager_GetLineBoolMiddle() && !lineManager_GetLineBoolRight())
+             }else if( (lineManager_GetLineBoolLeft()) && (!lineManager_GetLineBoolMiddle()) && (!lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = PARTIAL_LEFT;
-             }else if(!lineManager_GetLineBoolLeft() && !lineManager_GetLineBoolMiddle() && lineManager_GetLineBoolRight())
+             }else if( (!lineManager_GetLineBoolLeft()) && (!lineManager_GetLineBoolMiddle()) && (lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = PARTIAL_RIGHT;
-             }else if(!lineManager_GetLineBoolLeft() && lineManager_GetLineBoolMiddle() && lineManager_GetLineBoolRight())
+             }else if( (!lineManager_GetLineBoolLeft()) && (lineManager_GetLineBoolMiddle()) && (lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = HALF_RIGHT;
-             }else if(lineManager_GetLineBoolLeft() && lineManager_GetLineBoolMiddle() && lineManager_GetLineBoolRight())
+             }else if( (lineManager_GetLineBoolLeft()) && (lineManager_GetLineBoolMiddle()) && (lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = FULL;
              }
@@ -117,19 +117,19 @@ void lineManager_UpdateManager(void)
          
          case HALF_RIGHT:
 
-              if(!lineManager_GetLineBoolLeft() && !lineManager_GetLineBoolMiddle() && !lineManager_GetLineBoolRight())
+              if( (!lineManager_GetLineBoolLeft()) && (!lineManager_GetLineBoolMiddle()) && (!lineManager_GetLineBoolRight()) )
               {
                 line_manager_state = NO_LINE;
-             }else if(lineManager_GetLineBoolLeft() && !lineManager_GetLineBoolMiddle() && !lineManager_GetLineBoolRight())
+             }else if( (lineManager_GetLineBoolLeft()) && (!lineManager_GetLineBoolMiddle()) && (!lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = PARTIAL_LEFT;
-             }else if(!lineManager_GetLineBoolLeft() && !lineManager_GetLineBoolMiddle() && lineManager_GetLineBoolRight())
+             }else if( (!lineManager_GetLineBoolLeft()) && (!lineManager_GetLineBoolMiddle()) && (lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = PARTIAL_RIGHT;
-             }else if(lineManager_GetLineBoolLeft() && lineManager_GetLineBoolMiddle() && !lineManager_GetLineBoolRight())
+             }else if( (lineManager_GetLineBoolLeft()) && (lineManager_GetLineBoolMiddle()) && (!lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = HALF_LEFT;
-             }else if(lineManager_GetLineBoolLeft() && lineManager_GetLineBoolMiddle() && lineManager_GetLineBoolRight())
+             }else if( (lineManager_GetLineBoolLeft()) && (lineManager_GetLineBoolMiddle()) && (lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = FULL;
              }
@@ -138,19 +138,19 @@ void lineManager_UpdateManager(void)
          
          case FULL:
 
-             if(!lineManager_GetLineBoolLeft() && !lineManager_GetLineBoolMiddle() && !lineManager_GetLineBoolRight())
+             if( (!lineManager_GetLineBoolLeft()) && (!lineManager_GetLineBoolMiddle()) && (!lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = NO_LINE;
-             }else if(lineManager_GetLineBoolLeft() && !lineManager_GetLineBoolMiddle() && !lineManager_GetLineBoolRight())
+             }else if( (lineManager_GetLineBoolLeft()) && (!lineManager_GetLineBoolMiddle()) && (!lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = PARTIAL_LEFT;
-             }else if(!lineManager_GetLineBoolLeft() && !lineManager_GetLineBoolMiddle() && lineManager_GetLineBoolRight())
+             }else if( (!lineManager_GetLineBoolLeft()) && (!lineManager_GetLineBoolMiddle()) && (lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = PARTIAL_RIGHT;
-             }else if(lineManager_GetLineBoolLeft() && lineManager_GetLineBoolMiddle() && !lineManager_GetLineBoolRight())
+             }else if( (lineManager_GetLineBoolLeft()) && (lineManager_GetLineBoolMiddle()) && (!lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = HALF_LEFT;
-             }else if(!lineManager_GetLineBoolLeft() && lineManager_GetLineBoolMiddle() && lineManager_GetLineBoolRight())
+             }else if( (!lineManager_GetLineBoolLeft()) && (lineManager_GetLineBoolMiddle()) && (lineManager_GetLineBoolRight()) )
              {
                 line_manager_state = HALF_RIGHT;
              }
@@ -158,7 +158,6 @@ void lineManager_UpdateManager(void)
          break;
          
          default:
-              line_manager_state = NO_LINE;
          break;
      }
 }

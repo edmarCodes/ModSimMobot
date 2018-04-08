@@ -10,21 +10,24 @@
  * BACKWARD - backward motion
  * DELAY - preparation for the attack
  * FAST_FORWARD - forward motion with 100% speed
- * FAST_RIGHT - turn right at 100% speed
- * FAST_LEFT - turn left at 100% speed
- * 
+ * LINE_LEFT - if the line sensor detect a line on the left while on SLOW_RIGHT state
+ * LINE_RIGHT - if the line sensor detect a line on the right while on SLOW_LEFT state
+ * LINE_FORWARD - forward motion to recover from line detection and avoid oscillation
+ * LINE_BACKWARD - backward motion to recover from line detection and avoid oscillation
  */
 typedef enum
 {
  MOTOR_INIT=0,
- MOTOR_OFF=1,
+ MOTOR_STANDBY=1,
  SLOW_LEFT=2,
  SLOW_RIGHT=3,
   BACKWARD=4,
   DELAY=5,
   FAST_FORWARD=6,
-  FAST_RIGHT = 7,
-  FAST_LEFT = 8
+  LINE_LEFT=7,
+  LINE_RIGHT=8,
+  LINE_FORWARD=9,
+  LINE_BACKWARD=10
 }motor_manager_state_t;
 
 motor_manager_state_t motorManager_GetState(void);
@@ -53,4 +56,6 @@ void motorManager_UpdateManager2(void);
 
 #endif
 
+//motor A is the right side wheels
+//motor B is the left side wheels
 /*MOTOR_MANAGER_H*/
