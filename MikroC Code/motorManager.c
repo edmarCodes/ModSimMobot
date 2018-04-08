@@ -46,7 +46,7 @@ void motorManager_UpdateManager(void)
          motorManager_MotorAOff();
          motorManager_MotorBOff();*/
 
-         motor_manager_state = SLOW_LEFT;
+
          if(inputManager_GetState() == BOTH_SIGHT)
           {
                motor_manager_state = BACKWARD;
@@ -58,6 +58,8 @@ void motorManager_UpdateManager(void)
           else if( (inputManager_GetState() == RIGHT_SIGHT) || (lineManager_GetState() == PARTIAL_LEFT) || (lineManager_GetState() == HALF_LEFT) )
           {
                motor_manager_state = SLOW_RIGHT;
+          }else{
+               motor_manager_state = SLOW_LEFT;
           }
 
 

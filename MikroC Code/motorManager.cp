@@ -82,8 +82,7 @@ void motorManager_UpdateManager(void)
 
 
  case MOTOR_STANDBY:
-#line 49 "C:/Repository/ModSimMobot/MikroC Code/motorManager.c"
- motor_manager_state = SLOW_LEFT;
+#line 50 "C:/Repository/ModSimMobot/MikroC Code/motorManager.c"
  if(inputManager_GetState() == BOTH_SIGHT)
  {
  motor_manager_state = BACKWARD;
@@ -95,6 +94,8 @@ void motorManager_UpdateManager(void)
  else if( (inputManager_GetState() == RIGHT_SIGHT) || (lineManager_GetState() == PARTIAL_LEFT) || (lineManager_GetState() == HALF_LEFT) )
  {
  motor_manager_state = SLOW_RIGHT;
+ }else{
+ motor_manager_state = SLOW_LEFT;
  }
 
 
@@ -140,7 +141,7 @@ void motorManager_UpdateManager(void)
  break;
 
  case BACKWARD:
-#line 112 "C:/Repository/ModSimMobot/MikroC Code/motorManager.c"
+#line 114 "C:/Repository/ModSimMobot/MikroC Code/motorManager.c"
  motor_manager_state = DELAY;
 
  break;
@@ -257,7 +258,7 @@ void motorManager_UpdateManager2(void)
 
 
  case MOTOR_STANDBY:
-#line 234 "C:/Repository/ModSimMobot/MikroC Code/motorManager.c"
+#line 236 "C:/Repository/ModSimMobot/MikroC Code/motorManager.c"
  motor_manager_state = SLOW_LEFT;
 
  if(inputManager_GetState() == BOTH_SIGHT)
